@@ -4,7 +4,7 @@ import AnimateOnScroll from "./AnimateOnScroll";
 import ProjectMockup from "./ProjectMockup";
 import ProjectModal from "./ProjectModal";
 import ProjectVisual from "./ProjectVisual";
-import SparkleAccent from "./SparkleAccent";
+import SplitReveal from "./SplitReveal";
 
 export default function Projects() {
   const [active, setActive] = useState(null);
@@ -13,17 +13,16 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects">
-      <SparkleAccent size={44} top="6%" right="6%" variant="glow" duration={9} delay={4} />
       <div className="container">
         <AnimateOnScroll>
           <div className="section__header">
             <span className="section__label">Karya Pilihan</span>
-            <h2 className="section__title">Studi kasus</h2>
+            <SplitReveal as="h2" className="section__title" text="Studi kasus" />
           </div>
         </AnimateOnScroll>
 
         {featured && (
-          <AnimateOnScroll>
+          <AnimateOnScroll variant="scale" duration={1}>
             <button
               type="button"
               className="project-feature"
@@ -65,7 +64,11 @@ export default function Projects() {
 
         <div className="project-grid">
           {others.map((p, i) => (
-            <AnimateOnScroll key={p.id} delay={i * 100}>
+            <AnimateOnScroll
+              key={p.id}
+              delay={i * 100}
+              variant={i % 2 === 0 ? "left" : "right"}
+            >
               <button
                 type="button"
                 className="project-card"

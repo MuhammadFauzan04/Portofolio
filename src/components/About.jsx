@@ -1,23 +1,24 @@
 import { about } from "../data/portfolio";
 import AnimateOnScroll from "./AnimateOnScroll";
-import SparkleAccent from "./SparkleAccent";
+import SplitReveal from "./SplitReveal";
 
 export default function About() {
   return (
     <section id="about" className="section about">
-      <SparkleAccent size={44} top="6%" right="6%" variant="glow" duration={9} delay={0} />
       <div className="container">
         <AnimateOnScroll>
           <div className="section__header">
             <span className="section__label">Tentang</span>
-            <h2 className="section__title">
-              Desain yang lahir dari riset, bukan tebakan.
-            </h2>
+            <SplitReveal
+              as="h2"
+              className="section__title"
+              text="Desain yang lahir dari riset, bukan tebakan."
+            />
           </div>
         </AnimateOnScroll>
 
         <div className="about__grid">
-        <AnimateOnScroll className="about__photo-wrap">
+        <AnimateOnScroll className="about__photo-wrap" variant="scale" duration={1.1}>
             <div className="about__blob about__blob--a" />
             <div className="about__blob about__blob--b" />
 
@@ -43,7 +44,7 @@ export default function About() {
             </span>
           </AnimateOnScroll>
 
-          <AnimateOnScroll delay={100} className="about__text">
+          <AnimateOnScroll delay={100} className="about__text" variant="right">
             <p>{about.description}</p>
             <p>{about.academic}</p>
             <p>{about.secondary}</p>

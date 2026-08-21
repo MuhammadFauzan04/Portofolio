@@ -2,9 +2,11 @@ import { useMemo, useRef, useState } from "react";
 import { experience } from "../data/portfolio";
 import AnimateOnScroll from "./AnimateOnScroll";
 import CertificateModal from "./CertificateModal";
+import SplitReveal from "./SplitReveal";
 
 const TABS = [
   { key: "internships", label: "Magang & Kerja" },
+  { key: "certifications", label: "Sertifikasi & Pelatihan" },
   { key: "organizations", label: "Organisasi" },
 ];
 
@@ -60,9 +62,11 @@ export default function Experience() {
           <div className="section__header experience__header">
             <div>
               <span className="section__label">Pengalaman</span>
-              <h2 className="section__title">
-                Perjalanan magang dan organisasi
-              </h2>
+              <SplitReveal
+                as="h2"
+                className="section__title"
+                text="Perjalanan magang dan organisasi"
+              />
             </div>
 
             <div className="experience__nav">

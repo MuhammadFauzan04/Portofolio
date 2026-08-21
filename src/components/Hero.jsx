@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { hero } from "../data/portfolio";
 import HeroIdCard from "./HeroIdCard";
+import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 const STAR_COLORS = ["#60a5fa", "#67e8f9", "#bfdbfe"];
 const ROLES = [
@@ -158,6 +159,8 @@ function useTypewriter(words, { typeSpeed = 55, deleteSpeed = 30, pause = 1600 }
 }
 
 export default function Hero() {
+  const sectionRef = useRef(null);
+  const starsRef = useRef(null);
   const orbA = useRef(null);
   const orbB = useRef(null);
   const titleRef = useRef(null);
@@ -220,6 +223,46 @@ export default function Hero() {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(frame);
     };
+  }, []);
+
+  // Scroll-scrubbed depth parallax: the two orbs and the starfield drift at
+  // different speeds as the hero scrolls out of view, giving the section a
+  // sense of depth rather than moving as one flat layer.
+  useEffect(() => {
+    if (prefersReducedMotion() || !sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(orbA.current, {
+        y: 140,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      });
+      gsap.to(orbB.current, {
+        y: 220,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      });
+      gsap.to(starsRef.current, {
+        y: 80,
+        opacity: 0.3,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

@@ -1,6 +1,8 @@
+import { useLayoutEffect, useRef } from "react";
 import { skills } from "../data/portfolio";
 import AnimateOnScroll from "./AnimateOnScroll";
-import SparkleAccent from "./SparkleAccent";
+import SplitReveal from "./SplitReveal";
+import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 function ProcessConnectors({ count }) {
   const width = 1000;
@@ -33,20 +35,70 @@ function ProcessConnectors({ count }) {
 }
 
 export default function Skills() {
+  const flowRef = useRef(null);
+
+  // Draws each connector line (and pops its endpoint dots) progressively as
+  // the process flow scrolls through the viewport, tying the animation
+  // directly to scroll position rather than just fading in.
+  useLayoutEffect(() => {
+    const flow = flowRef.current;
+    if (!flow) return;
+
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const connectors = flow.querySelectorAll(".process__connector");
+      connectors.forEach((g, i) => {
+        const path = g.querySelector("path");
+        const dots = g.querySelectorAll("circle");
+        if (!path) return;
+        const length = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+        gsap.set(dots, { scale: 0, transformOrigin: "center" });
+
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: flow,
+            start: "top 75%",
+            end: "bottom 60%",
+            scrub: 0.6,
+          },
+        });
+        gsap.to(dots, {
+          scale: 1,
+          duration: 0.3,
+          delay: i * 0.05,
+          scrollTrigger: {
+            trigger: flow,
+            start: "top 65%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }, flow);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="skills" className="section skills">
-      <SparkleAccent size={44} top="6%" right="6%" variant="glow" duration={9} delay={2} />
       <div className="container">
         <AnimateOnScroll>
           <div className="section__header">
             <span className="section__label">Kemampuan</span>
-            <h2 className="section__title">Skill yang saya kuasai</h2>
+            <SplitReveal
+              as="h2"
+              className="section__title"
+              text="Skill yang saya kuasai"
+            />
           </div>
         </AnimateOnScroll>
 
         <div className="skill-row">
           {skills.items.map((item, i) => (
-            <AnimateOnScroll key={item} delay={i * 40}>
+            <AnimateOnScroll key={item} delay={i * 40} variant="scale" duration={0.6}>
               <span className="skill-chip">{item}</span>
             </AnimateOnScroll>
           ))}
@@ -56,13 +108,15 @@ export default function Skills() {
           <AnimateOnScroll>
             <div className="section__header process__header">
               <span className="section__label">Pendekatan</span>
-              <h3 className="section__title section__title--sm">
-                Proses kerja saya
-              </h3>
+              <SplitReveal
+                as="h3"
+                className="section__title section__title--sm"
+                text="Proses kerja saya"
+              />
             </div>
           </AnimateOnScroll>
 
-          <div className="process__flow">
+          <div className="process__flow" ref={flowRef}>
             <ProcessConnectors count={skills.process.length} />
 
             <div className="process__grid">
@@ -70,6 +124,7 @@ export default function Skills() {
                 <AnimateOnScroll
                   key={step.num}
                   delay={i * 100}
+                  variant="scale"
                   className="process__card-slot"
                 >
                   <div className="process__card">

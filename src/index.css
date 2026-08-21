@@ -398,6 +398,12 @@ a {
 .navbar__links a:hover::after {
   width: 100%;
 }
+.navbar__links a.is-active {
+  color: var(--ink);
+}
+.navbar__links a.is-active::after {
+  width: 100%;
+}
 .navbar__cta {
   font-size: 0.85rem;
   padding: 9px 18px;
@@ -469,6 +475,107 @@ a {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+/* ---------- MOBILE NAV (burger + slide-down panel) ---------- */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: background-color var(--theme-transition-duration) var(--theme-ease),
+    border-color var(--theme-transition-duration) var(--theme-ease);
+}
+.navbar__burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.navbar__burger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__burger--open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__burger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.navbar__mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 100px 24px 40px;
+  overflow-y: auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-left: 1px solid var(--line);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, background-color var(--theme-transition-duration) var(--theme-ease);
+}
+.navbar__mobile--open {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+.navbar__mobile-links a {
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+  font-weight: 500;
+  color: var(--ink);
+}
+.navbar__mobile-links a.is-active {
+  color: var(--blue-1);
+}
+.navbar__mobile-cta {
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+/* The floating back-to-top bubble sits at z-index 900 (above the mobile
+   menu's 90) so it would otherwise float on top of the full-screen menu
+   whenever it's opened after scrolling down. Hide it while the menu is
+   open. */
+body.nav-open .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+@media (max-width: 700px) {
+  .navbar__burger {
+    display: flex;
+  }
+  .navbar__cta {
+    display: none;
+  }
 }
 
 /* ---------- SCROLL PROGRESS ---------- */
@@ -1157,15 +1264,17 @@ a {
   50% { opacity: 1; }
 }
 
-/* ---------- REVEAL ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* ---------- REVEAL (driven by GSAP/ScrollTrigger via inline styles) ---------- */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+.split-word__inner {
+  display: inline-block;
+  will-change: transform;
 }
 
 /* ---------- SECTION SHARED ---------- */
@@ -1204,7 +1313,7 @@ a {
 /* ---------- ABOUT ---------- */
 .about__grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1.25fr 1fr;
   gap: 56px;
   align-items: center;
   margin-top: 56px;
@@ -1212,8 +1321,8 @@ a {
 
 .about__photo-wrap {
   position: relative;
-  padding: 30px 20px;
-  max-width: 380px;
+  padding: 30px 34px;
+  max-width: 540px;
 }
 
 .about__blob {
@@ -1278,8 +1387,8 @@ a {
   z-index: -1;
 }
 .about__badge--1 {
-  top: 2%;
-  left: -6%;
+  top: 6%;
+  left: 4%;
   background: linear-gradient(100deg, #2563eb, #3b82f6);
   animation-delay: 0s;
 }
@@ -1289,8 +1398,8 @@ a {
   transform: rotate(45deg);
 }
 .about__badge--2 {
-  top: 24%;
-  right: -10%;
+  top: 28%;
+  right: 4%;
   background: linear-gradient(100deg, #06b6d4, #22d3ee);
   animation-delay: 0.6s;
 }
@@ -1300,8 +1409,8 @@ a {
   transform: rotate(45deg);
 }
 .about__badge--3 {
-  bottom: 6%;
-  right: -8%;
+  bottom: 10%;
+  right: 4%;
   background: linear-gradient(100deg, #4f46e5, #6366f1);
   animation-delay: 1.2s;
 }
@@ -1351,7 +1460,7 @@ a {
     gap: 32px;
   }
   .about__photo-wrap {
-    max-width: 360px;
+    max-width: 420px;
     margin: 0 auto;
   }
 }
@@ -1395,7 +1504,8 @@ a {
 .process__flow {
   position: relative;
   margin-top: 60px;
-  padding: 46px 8px 60px;
+  padding: 20px 16px 30px;
+  overflow: visible;
 }
 
 .process__connectors {
@@ -1446,24 +1556,20 @@ a {
     color var(--theme-transition-duration) var(--theme-ease);
 }
 .process__card:hover {
-  transform: rotate(0deg) translateY(0) scale(1.04) !important;
+  transform: translateY(-6px);
   box-shadow: 0 26px 48px -20px rgba(15, 23, 42, 0.32);
   border-color: var(--blue-1);
   z-index: 2;
 }
 
-/* Staggered, gently rotated "photo stack" look, echoing the reference layout */
-.process__grid .process__card-slot:nth-child(1) .process__card {
-  transform: rotate(-2deg) translateY(10px);
-}
-.process__grid .process__card-slot:nth-child(2) .process__card {
-  transform: rotate(2.5deg) translateY(-26px);
-}
-.process__grid .process__card-slot:nth-child(3) .process__card {
-  transform: rotate(-3deg) translateY(20px);
-}
+/* Cards sit flat and aligned — the rotated "photo stack" look was removed
+   because it was the source of the top/bottom clipping against the flow
+   container. */
+.process__grid .process__card-slot:nth-child(1) .process__card,
+.process__grid .process__card-slot:nth-child(2) .process__card,
+.process__grid .process__card-slot:nth-child(3) .process__card,
 .process__grid .process__card-slot:nth-child(4) .process__card {
-  transform: rotate(2deg) translateY(-14px);
+  transform: none;
 }
 
 .process__num {
@@ -1490,7 +1596,7 @@ a {
 
 @media (max-width: 960px) {
   .process__flow {
-    padding: 8px 0 0;
+    padding: 12px 0 16px;
   }
   .process__connectors {
     display: none;
@@ -2737,94 +2843,37 @@ button.project-card:focus-visible {
   }
 }
 /* ============================================
-   Decorative sparkle / asterisk accent
+   Corner stickers — flat asterisk shapes glued
+   to the screen edges, cropped on purpose
    ============================================ */
-.sparkle {
-  position: absolute;
-  width: var(--sparkle-size);
-  height: var(--sparkle-size);
+.corner-stickers {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
   pointer-events: none;
-  z-index: 1;
 }
 
-.sparkle__icon {
-  position: relative;
-  z-index: 2;
-  display: block;
+.corner-sticker {
+  position: fixed;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.3));
+  transform: rotate(var(--sticker-rotate, 0deg));
+  transition: opacity 0.3s ease;
+}
+
+.corner-sticker__svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 6px 16px rgba(255, 138, 0, 0.35));
-}
-
-.sparkle__icon--spin {
-  animation: sparkle-spin var(--sparkle-duration) linear infinite;
-  animation-delay: var(--sparkle-delay);
-}
-
-@keyframes sparkle-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.sparkle__glow {
-  position: absolute;
-  inset: -45%;
-  z-index: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 178, 36, 0.55) 0%,
-    rgba(255, 138, 0, 0.22) 45%,
-    transparent 72%
-  );
-  filter: blur(16px);
-  animation: sparkle-pulse 4.5s ease-in-out infinite;
-  animation-delay: var(--sparkle-delay);
-}
-
-@keyframes sparkle-pulse {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
-}
-
-.sparkle--plain .sparkle__icon {
-  filter: drop-shadow(0 4px 10px rgba(255, 138, 0, 0.28));
-}
-
-.sparkle__panel {
-  position: absolute;
-  inset: -22%;
-  z-index: 0;
-  border-radius: 30%;
-  background: var(--glass-bg);
-  border: 1px solid var(--line);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1);
+  display: block;
 }
 
 @media (max-width: 640px) {
-  .sparkle {
-    transform: scale(0.8);
+  .corner-sticker {
+    transform: rotate(var(--sticker-rotate, 0deg)) scale(0.72);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sparkle__icon--spin {
-    animation: none;
-  }
-  .sparkle__glow {
-    animation: none;
+  .corner-sticker {
+    transition: none;
   }
 }

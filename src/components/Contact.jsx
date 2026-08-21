@@ -1,6 +1,5 @@
 import { contact } from "../data/portfolio";
 import AnimateOnScroll from "./AnimateOnScroll";
-import SparkleAccent from "./SparkleAccent";
 
 const ICONS = {
   linkedin: (
@@ -31,9 +30,8 @@ const ICONS = {
 export default function Contact() {
   return (
     <section id="contact" className="section contact">
-      <SparkleAccent size={44} top="6%" right="6%" variant="glow" duration={9} delay={6} />
       <div className="container">
-        <AnimateOnScroll className="contact-box">
+        <AnimateOnScroll className="contact-box" variant="scale" duration={1}>
           <div className="contact-box__spotlight" />
           <div className="contact-box__spotlight-core" />
 

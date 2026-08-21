@@ -89,6 +89,30 @@ export const experience = {
       certificate: "/sertifikat-choice.jpg",
     },
   ],
+  certifications: [
+    {
+      id: "cert-placeholder-1",
+      role: "Nama Sertifikasi / Bootcamp",
+      org: "Penyelenggara (mis. Dicoding, Udemy, dsb.)",
+      period: "Bulan Tahun",
+      points: [
+        "Deskripsi singkat materi atau skill yang dipelajari.",
+        "Poin tambahan tentang hasil atau capaian dari pelatihan ini.",
+      ],
+      certificate: "",
+    },
+    {
+      id: "cert-placeholder-2",
+      role: "Nama Sertifikasi / Bootcamp",
+      org: "Penyelenggara (mis. Coursera, Skilvul, dsb.)",
+      period: "Bulan Tahun",
+      points: [
+        "Deskripsi singkat materi atau skill yang dipelajari.",
+        "Poin tambahan tentang hasil atau capaian dari pelatihan ini.",
+      ],
+      certificate: "",
+    },
+  ],
   organizations: [
     {
       id: "org-himatika",
@@ -134,7 +158,7 @@ export const projects = {
         "Perancangan prototipe UI/UX untuk sistem manajemen rumah sakit, studi kasus RSUD Wakatobi.",
       description:
         "Perancangan prototipe UI/UX untuk sistem manajemen rumah sakit, studi kasus RSUD Wakatobi. Dirancang menggunakan pendekatan User-Centered Design, divalidasi melalui Maze usability testing, System Usability Scale, dan User Acceptance Test. Project ini mencakup riset kebutuhan pengguna, penyusunan wireframe, desain antarmuka, hingga pengujian usability untuk memastikan sistem mudah digunakan oleh staf rumah sakit.",
-      meta: ["UCD", "Figma", "Usability Testing", "Skripsi"],
+      meta: ["UCD", "Figma", "Usability Testing", "Skripsi", "CV. Choice Indonesia"],
       accent: "blue",
       images: ["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"],
       logo: "/medilink-logo.png",
@@ -148,7 +172,7 @@ export const projects = {
         "Aplikasi travel penerbangan umrah yang menghubungkan berbagai penyelenggara travel dalam satu platform.",
       description:
         "Yalla App merupakan aplikasi travel penerbangan umrah yang menghubungkan berbagai penyelenggara travel dalam satu platform. Aplikasi ini memudahkan pengelolaan jadwal penerbangan, data jamaah, reservasi, pembayaran, serta pemantauan proses keberangkatan secara terintegrasi sehingga operasional travel menjadi lebih efisien.",
-      meta: ["UI/UX", "Figma", "Mobile App"],
+      meta: ["UI/UX", "Figma", "Mobile App", "Project Freelance"],
       accent: "cyan",
       images: ["/yalla_slide1.png", "/yalla_slide2.png", "/yalla_slide3.png"],
       logo: "/yalla-logo.jpg",
@@ -162,10 +186,36 @@ export const projects = {
         "Aplikasi pemesanan tiket kapal online untuk memudahkan perjalanan antar pulau di wilayah Sorong.",
       description:
         "Belibis App adalah aplikasi pemesanan tiket kapal online yang dirancang untuk memudahkan perjalanan antar pulau di wilayah Sorong. Aplikasi ini memungkinkan pengguna mencari jadwal kapal, memilih kursi, melakukan pemesanan dan pembayaran, serta mengakses informasi perjalanan secara praktis melalui satu platform yang terintegrasi.",
-      meta: ["UI/UX", "Figma", "Mobile App"],
+      meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group"],
       accent: "indigo",
       logo: "/belibis-logo.png",
       images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
+    },
+    {
+      id: "project-placeholder-1",
+      featured: false,
+      tag: "PROJECT",
+      title: "Sinergi - Ji App",
+      summary: "SINERGI-JI Aplikasi pelaporan dan pemantauan gangguan jaringan internet untuk instansi pemerintah di Kota Makassar.",
+      description:
+        "SINERGI-JI (Sinergi Jaringan Intra Pemerintah) memudahkan setiap kantor kedinasan di Kota Makassar melaporkan gangguan jaringan internet secara cepat dan terstruktur, menggantikan pelaporan manual via telepon. Laporan bisa dipantau statusnya secara real-time hingga ditangani tim teknis.",
+      meta: ["UI/UX", "Figma", "Flutter", "Frontend", "Mobile App", "Dinas Komunikasi dan Informatika Kota Makassar"],
+      accent: "blue",
+      logo: "/sinergiji-logo.png",
+      images: ["/sinergiji-1.png", "/sinergiji-2.png", "/sinergiji-3.png"],
+    },
+    {
+      id: "project-placeholder-2",
+      featured: false,
+      tag: "PROJECT",
+      title: "Pusaka Bugis Web",
+      summary: "Website eksplorasi budaya keris Bugis di Kabupaten Bone, dilengkapi fitur scan pamor keris",
+      description:
+        "Pusaka Bugis adalah website yang menampilkan nilai-nilai dan sejarah budaya keris khas Kabupaten Bone, memperkenalkan makna filosofis di balik setiap pusaka kepada masyarakat luas. Website ini juga dilengkapi fitur scan pamor, memungkinkan pengguna mengecek dan mengenali jenis pamor pada keris yang mereka miliki secara mudah",
+      meta: ["UI/UX", "Figma", "Website", "LPDP"],
+      accent: "cyan",
+      logo: "/pusakabugis-logo.png",
+      images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
     },
   ],
 };
