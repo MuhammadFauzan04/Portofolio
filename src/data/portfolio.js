@@ -91,26 +91,40 @@ export const experience = {
   ],
   certifications: [
     {
-      id: "cert-placeholder-1",
-      role: "Nama Sertifikasi / Bootcamp",
-      org: "Penyelenggara (mis. Dicoding, Udemy, dsb.)",
-      period: "Bulan Tahun",
+      id: "cert-rakamin-uiux",
+      role: "Kickstart UI UX Design Journey",
+      org: "Rakamin Academy",
+      period: "Agustus 2026",
       points: [
-        "Deskripsi singkat materi atau skill yang dipelajari.",
-        "Poin tambahan tentang hasil atau capaian dari pelatihan ini.",
+        "Mengikuti program Flexible Kickstart UI UX Design Journey untuk mempelajari dasar-dasar proses dan alur kerja UI/UX Design secara terstruktur.",
+        "Menyelesaikan program dengan meraih predikat Excellent Grade.",
       ],
-      certificate: "",
+      certificates: [
+        {
+          label: "Sertifikat Partisipasi",
+          image: "/certificates/rakamin-uiux-participation.jpg",
+        },
+        {
+          label: "Sertifikat Pencapaian",
+          image: "/certificates/rakamin-uiux-achievement.jpg",
+        },
+      ],
     },
     {
       id: "cert-placeholder-2",
-      role: "Nama Sertifikasi / Bootcamp",
-      org: "Penyelenggara (mis. Coursera, Skilvul, dsb.)",
-      period: "Bulan Tahun",
+      role: "Design Thinking for Beginners",
+      org: "Simplilearn SkillUp",
+      period: "Agustus 2026",
       points: [
-        "Deskripsi singkat materi atau skill yang dipelajari.",
-        "Poin tambahan tentang hasil atau capaian dari pelatihan ini.",
+        "Mempelajari fondasi metodologi Design Thinking untuk perancangan produk dan pemecahan masalah yang berpusat pada pengguna (user-centric).",
+        "Memahami tahapan inti perancangan mulai dari empathy, define problem, ideation, hingga validasi solusi desain.",
       ],
-      certificate: "",
+      certificates: [
+        {
+          label: "Sertifikat Partisipasi",
+          image: "/certificates/cert-simplilearn-design-thinking.jpg",
+        },
+      ],
     },
   ],
   organizations: [
@@ -125,13 +139,13 @@ export const experience = {
       ],
     },
     {
-      id: "org-hmi",
-      role: "Sekretaris Umum",
-      org: "Himpunan Mahasiswa Islam (HMI)",
-      period: "Januari 2026",
+      id: "org-hmi-mipa",
+      role: "Sekretaris Bidang PTKP",
+      org: "Himpunan Mahasiswa Islam (HMI) Komisariat MIPA Unhas",
+      period: "September 2024 — Desember 2025",
       points: [
-        "Mengelola administrasi dan kesekretariatan organisasi secara menyeluruh.",
-        "Mendukung koordinasi program kerja antar bidang di kepengurusan.",
+        "Mengelola administrasi dan dokumentasi kegiatan Bidang PTKP secara berkala.",
+        "Mendukung koordinasi dan pelaksanaan program kerja Bidang PTKP bersama pengurus lainnya.",
       ],
     },
     {
@@ -142,6 +156,16 @@ export const experience = {
       points: [
         "Mengembangkan program terkait teknologi pendidikan dan pemberdayaan sumber daya manusia.",
         "Merancang inisiatif untuk meningkatkan kapasitas anggota di bidang teknologi.",
+      ],
+    },
+    {
+      id: "org-hmi",
+      role: "Sekretaris Umum",
+      org: "Himpunan Mahasiswa Islam (HMI)",
+      period: "Januari 2026",
+      points: [
+        "Mengelola administrasi dan kesekretariatan organisasi secara menyeluruh.",
+        "Mendukung koordinasi program kerja antar bidang di kepengurusan.",
       ],
     },
   ],
@@ -186,13 +210,13 @@ export const projects = {
         "Aplikasi pemesanan tiket kapal online untuk memudahkan perjalanan antar pulau di wilayah Sorong.",
       description:
         "Belibis App adalah aplikasi pemesanan tiket kapal online yang dirancang untuk memudahkan perjalanan antar pulau di wilayah Sorong. Aplikasi ini memungkinkan pengguna mencari jadwal kapal, memilih kursi, melakukan pemesanan dan pembayaran, serta mengakses informasi perjalanan secara praktis melalui satu platform yang terintegrasi.",
-      meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group"],
+      meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group", "Project Freelance"],
       accent: "indigo",
       logo: "/belibis-logo.png",
       images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
     },
     {
-      id: "project-placeholder-1",
+      id: "sinergi-ji",
       featured: false,
       tag: "PROJECT",
       title: "Sinergi - Ji App",
@@ -205,17 +229,31 @@ export const projects = {
       images: ["/sinergiji-1.png", "/sinergiji-2.png", "/sinergiji-3.png"],
     },
     {
-      id: "project-placeholder-2",
+      id: "pusaka-bugis",
       featured: false,
       tag: "PROJECT",
       title: "Pusaka Bugis Web",
       summary: "Website eksplorasi budaya keris Bugis di Kabupaten Bone, dilengkapi fitur scan pamor keris",
       description:
         "Pusaka Bugis adalah website yang menampilkan nilai-nilai dan sejarah budaya keris khas Kabupaten Bone, memperkenalkan makna filosofis di balik setiap pusaka kepada masyarakat luas. Website ini juga dilengkapi fitur scan pamor, memungkinkan pengguna mengecek dan mengenali jenis pamor pada keris yang mereka miliki secara mudah",
-      meta: ["UI/UX", "Figma", "Website", "LPDP"],
+      meta: ["UI/UX", "Figma", "Website", "LPDP", "Project Freelance"],
       accent: "cyan",
       logo: "/pusakabugis-logo.png",
       images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
+    },
+    {
+      id: "cbr-dent",
+      featured: false,
+      tag: "PROJECT",
+      title: "CBR-Dent",
+      summary:
+        "Sistem manajemen klinik gigi dengan mesin rekomendasi Case-Based Reasoning untuk membantu dokter menentukan desain obturator.",
+      description:
+        "CBR-Dent adalah sistem informasi manajemen klinik gigi yang mengintegrasikan pendekatan Case-Based Reasoning (CBR) untuk membantu dokter gigi menganalisis kasus dan mendapatkan rekomendasi desain obturator berdasarkan tingkat kemiripan dengan kasus-kasus sebelumnya. Rancangan mencakup alur login, manajemen data pasien, formulir input parameter kasus klinis, hingga tampilan hasil analisis dengan skor kecocokan yang mudah dibaca oleh tenaga medis.",
+      meta: ["UI/UX", "Figma", "Case-Based Reasoning", "Website", "Project Freenlance"],
+      accent: "teal",
+      logo: "/cbr-dent-logo.png",
+      images: ["/cbr-dent-1.png", "/cbr-dent-2.png", "/cbr-dent-3.png"],
     },
   ],
 };

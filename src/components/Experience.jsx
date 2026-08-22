@@ -125,7 +125,7 @@ export default function Experience() {
                   <li key={idx}>{point}</li>
                 ))}
               </ul>
-              {item.certificate && (
+              {(item.certificate || item.certificates?.length > 0) && (
                 <button
                   type="button"
                   className="experience__cert-btn"
