@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useContent } from "../context/LanguageContext";
 
 const INTERVAL_MS = 3500;
 
 export default function ProjectCarousel({ images = [] }) {
+  const { ui } = useContent();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function ProjectCarousel({ images = [] }) {
               i === index ? "carousel__slide--active" : ""
             }`}
           >
-            <img src={src} alt={`Preview ${i + 1}`} className="carousel__image" />
+            <img src={src} alt={`${ui.previewLabel} ${i + 1}`} className="carousel__image" />
           </div>
         ))}
       </div>
@@ -39,7 +41,7 @@ export default function ProjectCarousel({ images = [] }) {
               className={`carousel__dot ${
                 i === index ? "carousel__dot--active" : ""
               }`}
-              aria-label={`Slide ${i + 1}`}
+              aria-label={`${ui.slideLabel} ${i + 1}`}
               onClick={() => setIndex(i)}
             />
           ))}

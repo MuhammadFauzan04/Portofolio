@@ -1,4 +1,4 @@
-import { contact } from "../data/portfolio";
+import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 
 const ICONS = {
@@ -28,6 +28,7 @@ const ICONS = {
 };
 
 export default function Contact() {
+  const { contact } = useContent();
   return (
     <section id="contact" className="section contact">
       <div className="container">
@@ -45,7 +46,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="btn btn--primary"
               >
-                Kirim Email →
+                {contact.sendEmailLabel}
               </a>
             </div>
 

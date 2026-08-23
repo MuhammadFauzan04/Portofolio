@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useContent } from "../context/LanguageContext";
 
 // Natural (relaxed) length of the strap in px, measured from the clip anchor
 // to the card's grommet hole when hanging still.
@@ -16,6 +17,7 @@ const CARD_HALF_WIDTH = 76; // half of .hero-idcard width, keeps card centered u
 const HOLE_OFFSET_Y = 15; // distance from card top edge to the grommet hole center
 
 export default function HeroIdCard() {
+  const { hero } = useContent();
   const anchorRef = useRef(null);
   const cardRef = useRef(null);
   const ropeStrapRef = useRef(null);
@@ -259,7 +261,7 @@ export default function HeroIdCard() {
           </div>
         </div>
         {hintVisible && (
-          <div className="hero-idcard__hint">Tarik & lepas kartunya 👆</div>
+          <div className="hero-idcard__hint">{hero.dragHint}</div>
         )}
       </div>
     </div>

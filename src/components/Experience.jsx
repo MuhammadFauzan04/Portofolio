@@ -1,16 +1,11 @@
 import { useMemo, useRef, useState } from "react";
-import { experience } from "../data/portfolio";
+import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import CertificateModal from "./CertificateModal";
 import SplitReveal from "./SplitReveal";
 
-const TABS = [
-  { key: "internships", label: "Magang & Kerja" },
-  { key: "certifications", label: "Sertifikasi & Pelatihan" },
-  { key: "organizations", label: "Organisasi" },
-];
-
 export default function Experience() {
+  const { experience } = useContent();
   const [activeTab, setActiveTab] = useState("internships");
   const [activeCertificate, setActiveCertificate] = useState(null);
   const trackRef = useRef(null);
@@ -61,11 +56,11 @@ export default function Experience() {
         <AnimateOnScroll>
           <div className="section__header experience__header">
             <div>
-              <span className="section__label">Pengalaman</span>
+              <span className="section__label">{experience.sectionLabel}</span>
               <SplitReveal
                 as="h2"
                 className="section__title"
-                text="Perjalanan magang dan organisasi"
+                text={experience.sectionTitle}
               />
             </div>
 
@@ -74,7 +69,7 @@ export default function Experience() {
                 type="button"
                 className="experience__arrow"
                 onClick={() => scrollBy(-1)}
-                aria-label="Sebelumnya"
+                aria-label={experience.prevLabel}
               >
                 ←
               </button>
@@ -82,7 +77,7 @@ export default function Experience() {
                 type="button"
                 className="experience__arrow"
                 onClick={() => scrollBy(1)}
-                aria-label="Selanjutnya"
+                aria-label={experience.nextLabel}
               >
                 →
               </button>
@@ -92,7 +87,7 @@ export default function Experience() {
 
         <AnimateOnScroll delay={80}>
           <div className="experience__tabs">
-            {TABS.map((tab) => (
+            {experience.tabs.map((tab) => (
               <button
                 key={tab.key}
                 type="button"
@@ -131,7 +126,7 @@ export default function Experience() {
                   className="experience__cert-btn"
                   onClick={() => setActiveCertificate(item)}
                 >
-                  Lihat Sertifikat
+                  {experience.viewCertificateLabel}
                 </button>
               )}
             </AnimateOnScroll>

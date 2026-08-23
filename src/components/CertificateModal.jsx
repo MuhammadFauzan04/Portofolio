@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
+import { useContent } from "../context/LanguageContext";
 
 export default function CertificateModal({ item, onClose }) {
+  const { ui } = useContent();
   const [imgError, setImgError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const slides = useMemo(() => {
     if (!item) return [];
     if (item.certificates?.length > 0) return item.certificates;
-    if (item.certificate) return [{ label: "Sertifikat", image: item.certificate }];
+    if (item.certificate)
+      return [{ label: ui.defaultCertificateLabel, image: item.certificate }];
     return [];
-  }, [item]);
+  }, [item, ui.defaultCertificateLabel]);
 
   const current = slides[activeIndex];
 
@@ -51,10 +54,10 @@ export default function CertificateModal({ item, onClose }) {
         className="modal-content certificate-modal"
         role="dialog"
         aria-modal="true"
-        aria-label={`Sertifikat ${item.role} di ${item.org}`}
+        aria-label={ui.certificateOf(item.role, item.org)}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="modal-close" onClick={onClose} aria-label="Tutup">
+        <button className="modal-close" onClick={onClose} aria-label={ui.close}>
           ✕
         </button>
 
@@ -64,7 +67,7 @@ export default function CertificateModal({ item, onClose }) {
               type="button"
               className="certificate-modal__nav certificate-modal__nav--prev"
               onClick={goPrev}
-              aria-label="Sertifikat sebelumnya"
+              aria-label={ui.prevCertificate}
             >
               ‹
             </button>
@@ -72,14 +75,14 @@ export default function CertificateModal({ item, onClose }) {
 
           {imgError ? (
             <div className="certificate-modal__placeholder">
-              Sertifikat belum tersedia. Tambahkan file gambar ke folder{" "}
-              <code>public/</code> dengan nama{" "}
+              {ui.certificateUnavailablePrefix} <code>public/</code>{" "}
+              {ui.certificateUnavailableSuffix}{" "}
               <code>{current.image?.replace(/^\//, "")}</code>.
             </div>
           ) : (
             <img
               src={current.image}
-              alt={`${current.label} - ${item.role} di ${item.org}`}
+              alt={`${current.label} - ${item.role} — ${item.org}`}
               className="certificate-modal__image"
               onError={() => setImgError(true)}
             />
@@ -90,7 +93,7 @@ export default function CertificateModal({ item, onClose }) {
               type="button"
               className="certificate-modal__nav certificate-modal__nav--next"
               onClick={goNext}
-              aria-label="Sertifikat berikutnya"
+              aria-label={ui.nextCertificate}
             >
               ›
             </button>
@@ -133,7 +136,7 @@ export default function CertificateModal({ item, onClose }) {
                 rel="noopener noreferrer"
                 className="certificate-modal__link"
               >
-                Buka di tab baru ↗
+                {ui.openInNewTab}
               </a>
             </div>
           )}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useContent } from "../context/LanguageContext";
 
 const DURATION = 1700; // ms, simulated loading progress
 const EXIT_DURATION = 650; // ms, must match the CSS exit transition below
@@ -6,6 +7,7 @@ const RING_RADIUS = 28;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 export default function Preloader({ onFinish }) {
+  const { ui } = useContent();
   const [progress, setProgress] = useState(0);
   const [exiting, setExiting] = useState(false);
   const [done, setDone] = useState(false);
@@ -67,7 +69,7 @@ export default function Preloader({ onFinish }) {
       className={`preloader ${exiting ? "preloader--exit" : ""}`}
       role="status"
       aria-live="polite"
-      aria-label={`Memuat halaman, ${progress}%`}
+      aria-label={ui.loadingPage(progress)}
     >
       <div className="preloader__mark">
         <span className="preloader__letter">F</span>
@@ -95,7 +97,7 @@ export default function Preloader({ onFinish }) {
         <div className="preloader__bar-fill" style={{ width: `${progress}%` }} />
       </div>
       <div className="preloader__label">
-        <span>Menyiapkan pengalaman</span>
+        <span>{ui.preparingExperience}</span>
         <span className="preloader__percent">{progress}%</span>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useContent } from "../context/LanguageContext";
 import ProjectCarousel from "./ProjectCarousel";
 
 export default function ProjectModal({ project, onClose }) {
+  const { ui } = useContent();
   useEffect(() => {
     if (!project) return;
     const onKey = (e) => {
@@ -26,7 +28,7 @@ export default function ProjectModal({ project, onClose }) {
         aria-label={project.title}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="modal-close" onClick={onClose} aria-label="Tutup">
+        <button className="modal-close" onClick={onClose} aria-label={ui.close}>
           ✕
         </button>
 

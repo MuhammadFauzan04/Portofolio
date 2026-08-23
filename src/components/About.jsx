@@ -1,18 +1,20 @@
-import { about } from "../data/portfolio";
+import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import SplitReveal from "./SplitReveal";
 
 export default function About() {
+  const { about } = useContent();
+
   return (
     <section id="about" className="section about">
       <div className="container">
         <AnimateOnScroll>
           <div className="section__header">
-            <span className="section__label">Tentang</span>
+            <span className="section__label">{about.sectionLabel}</span>
             <SplitReveal
               as="h2"
               className="section__title"
-              text="Desain yang lahir dari riset, bukan tebakan."
+              text={about.sectionTitle}
             />
           </div>
         </AnimateOnScroll>
@@ -25,22 +27,22 @@ export default function About() {
             <div className="about__photo-frame">
               <img
                 src={about.photo}
-                alt="Foto profil"
+                alt={about.photoAlt}
                 className="about__photo"
               />
             </div>
 
             <span className="about__badge about__badge--1">
               <span className="about__badge-arrow about__badge-arrow--1" />
-              UI/UX Designer
+              {about.badges[0]}
             </span>
             <span className="about__badge about__badge--2">
               <span className="about__badge-arrow about__badge-arrow--2" />
-              User-Centered Design
+              {about.badges[1]}
             </span>
             <span className="about__badge about__badge--3">
               <span className="about__badge-arrow about__badge-arrow--3" />
-              Sistem Informasi
+              {about.badges[2]}
             </span>
           </AnimateOnScroll>
 

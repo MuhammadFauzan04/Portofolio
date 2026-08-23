@@ -1,17 +1,24 @@
-import ProjectMockup from "./ProjectMockup";
-
-export default function ProjectVisual({ accent = "blue", logo, title, variant = 1 }) {
+// Renders a project's real screenshot floating over a soft, animated color
+// mesh — replacing the old abstract-logo panel with an honest preview of
+// the actual product, while keeping the colorful "glow" identity per card.
+export default function ProjectVisual({ accent = "blue", image, logo, title }) {
   return (
-    <div className={`visual-panel visual-panel--${accent}`}>
-      <div className="visual-panel__mesh" />
-      <div className="visual-panel__grid" />
-      <div className="visual-panel__content">
-        {logo ? (
-          <img src={logo} alt={title} className="visual-panel__logo" />
-        ) : (
-          <ProjectMockup accent={accent} variant={variant} />
-        )}
-      </div>
+    <div className={`showcase-visual showcase-visual--${accent}`}>
+      <div className="showcase-visual__mesh" />
+      <div className="showcase-visual__grid" />
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          className="showcase-visual__shot"
+          loading="lazy"
+        />
+      )}
+      {logo && (
+        <span className="showcase-visual__badge">
+          <img src={logo} alt="" />
+        </span>
+      )}
     </div>
   );
 }

@@ -1,15 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { hero } from "../data/portfolio";
+import { useContent, useLanguage } from "../context/LanguageContext";
 import HeroIdCard from "./HeroIdCard";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 const STAR_COLORS = ["#60a5fa", "#67e8f9", "#bfdbfe"];
-const ROLES = [
-  "UI/UX Designer",
-  "Sistem Informasi",
-  "User-Centered Design",
-  "Frontend Enthusiast",
-];
 
 // Splits a phrase around the first letter of a target word, so that letter
 // can be styled separately (e.g. as a script-font accent) while the rest
@@ -96,9 +90,9 @@ function useFitTitle(titleRef, deps = []) {
   }, deps);
 }
 
-function useLocalTime(timeZone) {
+function useLocalTime(timeZone, locale) {
   const [time, setTime] = useState(() =>
-    new Intl.DateTimeFormat("id-ID", {
+    new Intl.DateTimeFormat(locale, {
       hour: "2-digit",
       minute: "2-digit",
       timeZone,
@@ -106,7 +100,7 @@ function useLocalTime(timeZone) {
   );
 
   useEffect(() => {
-    const formatter = new Intl.DateTimeFormat("id-ID", {
+    const formatter = new Intl.DateTimeFormat(locale, {
       hour: "2-digit",
       minute: "2-digit",
       timeZone,
@@ -115,7 +109,7 @@ function useLocalTime(timeZone) {
     tick();
     const id = setInterval(tick, 30_000);
     return () => clearInterval(id);
-  }, [timeZone]);
+  }, [timeZone, locale]);
 
   return time;
 }
@@ -124,6 +118,14 @@ function useTypewriter(words, { typeSpeed = 55, deleteSpeed = 30, pause = 1600 }
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
+
+  // Reset the typed text whenever the word list itself changes (e.g. the
+  // language toggled), so we don't keep animating stale-language text.
+  useEffect(() => {
+    setText("");
+    setWordIndex(0);
+    setDeleting(false);
+  }, [words]);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -159,16 +161,19 @@ function useTypewriter(words, { typeSpeed = 55, deleteSpeed = 30, pause = 1600 }
 }
 
 export default function Hero() {
+  const { hero } = useContent();
+  const { lang } = useLanguage();
   const sectionRef = useRef(null);
   const starsRef = useRef(null);
   const orbA = useRef(null);
   const orbB = useRef(null);
   const titleRef = useRef(null);
-  const typedRole = useTypewriter(ROLES);
-  const localTime = useLocalTime("Asia/Makassar");
+  const typedRole = useTypewriter(hero.roles);
+  const localeTag = lang === "id" ? "id-ID" : "en-US";
+  const localTime = useLocalTime("Asia/Makassar", localeTag);
   const accentGrad = useMemo(
-    () => splitAccentLetter(hero.titleLineGrad, "Berpusat"),
-    []
+    () => splitAccentLetter(hero.titleLineGrad, hero.accentWord),
+    [hero.titleLineGrad, hero.accentWord]
   );
 
   useFitTitle(titleRef, [hero.titleLine1, hero.titleLineGrad]);
@@ -304,10 +309,10 @@ export default function Hero() {
           </svg>
         </span>
         <div className="hero-corner__info">
-          <span className="hero-corner__city">Makassar, Indonesia</span>
+          <span className="hero-corner__city">{hero.cityLabel}</span>
           <span className="hero-corner__time">
             <span className="hero-corner__dot" />
-            {localTime} WITA — waktu setempat
+            {localTime} {hero.localTimeSuffix}
           </span>
         </div>
       </div>
@@ -331,7 +336,7 @@ export default function Hero() {
       </h1>
 
       <p className="hero__role">
-        <span className="hero__role-label">Fokus saat ini:</span>{" "}
+        <span className="hero__role-label">{hero.focusLabel}</span>{" "}
         <span className="hero__role-typed">
           {typedRole}
           <span className="hero__role-caret" aria-hidden="true" />
@@ -350,7 +355,7 @@ export default function Hero() {
       </div>
 
       <div className="scroll-hint">
-        <span>SCROLL</span>
+        <span>{hero.scrollLabel}</span>
         <div className="scroll-hint__line" />
       </div>
     </section>

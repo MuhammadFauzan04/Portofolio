@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { nav } from "../data/portfolio";
+import { useContent } from "../context/LanguageContext";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 // Section ids that should be tracked for the scrollspy active-link
@@ -9,6 +10,7 @@ import { gsap, prefersReducedMotion } from "../lib/gsap";
 const SECTION_IDS = ["hero", "about", "skills", "experience", "projects", "contact"];
 
 export default function Navbar() {
+  const { nav, ui } = useContent();
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -101,14 +103,15 @@ export default function Navbar() {
         </div>
 
         <div className="navbar__actions">
+          <LanguageToggle />
           <ThemeToggle />
           <a href="#contact" className="navbar__cta">
-            Hubungi Saya
+            {ui.contactCta}
           </a>
           <button
             type="button"
             className={`navbar__burger ${menuOpen ? "navbar__burger--open" : ""}`}
-            aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+            aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
@@ -142,7 +145,7 @@ export default function Navbar() {
           className="btn btn--primary navbar__mobile-cta"
           onClick={closeMenu}
         >
-          Hubungi Saya →
+          {ui.contactCtaArrow}
         </a>
       </div>
     </nav>

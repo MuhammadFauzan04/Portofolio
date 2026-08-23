@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
-import { skills } from "../data/portfolio";
+import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import SplitReveal from "./SplitReveal";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
@@ -35,6 +35,7 @@ function ProcessConnectors({ count }) {
 }
 
 export default function Skills() {
+  const { skills } = useContent();
   const flowRef = useRef(null);
 
   // Draws each connector line (and pops its endpoint dots) progressively as
@@ -87,11 +88,11 @@ export default function Skills() {
       <div className="container">
         <AnimateOnScroll>
           <div className="section__header">
-            <span className="section__label">Kemampuan</span>
+            <span className="section__label">{skills.sectionLabel}</span>
             <SplitReveal
               as="h2"
               className="section__title"
-              text="Skill yang saya kuasai"
+              text={skills.sectionTitle}
             />
           </div>
         </AnimateOnScroll>
@@ -107,11 +108,11 @@ export default function Skills() {
         <div className="process">
           <AnimateOnScroll>
             <div className="section__header process__header">
-              <span className="section__label">Pendekatan</span>
+              <span className="section__label">{skills.processLabel}</span>
               <SplitReveal
                 as="h3"
                 className="section__title section__title--sm"
-                text="Proses kerja saya"
+                text={skills.processTitle}
               />
             </div>
           </AnimateOnScroll>

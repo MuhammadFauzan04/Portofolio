@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useContent } from "../context/LanguageContext";
 
 export default function BackToTop() {
+  const { ui } = useContent();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -19,8 +21,8 @@ export default function BackToTop() {
       type="button"
       className={`back-to-top ${visible ? "back-to-top--visible" : ""}`}
       onClick={scrollToTop}
-      aria-label="Kembali ke atas"
-      title="Kembali ke atas"
+      aria-label={ui.backToTop}
+      title={ui.backToTop}
     >
       <svg
         viewBox="0 0 24 24"
