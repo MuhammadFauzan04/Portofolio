@@ -177,7 +177,7 @@ export const content = {
           certificates: [
             {
               label: "Sertifikat Partisipasi",
-              image: "/certificates/dibimbing.pdf",
+              image: "/certificates/dibimbing-cert.jpg",
             },
           ],
         },
