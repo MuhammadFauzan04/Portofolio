@@ -15,6 +15,7 @@ export default function CertificateModal({ item, onClose }) {
   }, [item, ui.defaultCertificateLabel]);
 
   const current = slides[activeIndex];
+  const isPdf = current?.image?.toLowerCase().endsWith(".pdf");
 
   useEffect(() => {
     setImgError(false);
@@ -79,6 +80,13 @@ export default function CertificateModal({ item, onClose }) {
               {ui.certificateUnavailableSuffix}{" "}
               <code>{current.image?.replace(/^\//, "")}</code>.
             </div>
+          ) : isPdf ? (
+            <iframe
+              src={current.image}
+              title={`${current.label} - ${item.role} — ${item.org}`}
+              className="certificate-modal__pdf"
+              onError={() => setImgError(true)}
+            />
           ) : (
             <img
               src={current.image}

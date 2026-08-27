@@ -165,6 +165,22 @@ export const content = {
             },
           ],
         },
+        {
+          id: "cert-dibimbing",
+          role: "Event Online - Graphic Design & UI/UX Series",
+          org: "Dibimbing",
+          period: "Agustus 2026",
+          points: [
+            "Hari pertama membahas hierarki desain (design hierarchy) dalam UI, mencakup prinsip penataan elemen visual agar antarmuka lebih terstruktur dan mudah dipahami pengguna.",
+            "Hari kedua membahas UX melalui pendekatan Design Thinking, mulai dari memahami permasalahan pengguna hingga merancang solusi yang berpusat pada kebutuhan mereka.",
+          ],
+          certificates: [
+            {
+              label: "Sertifikat Partisipasi",
+              image: "/certificates/dibimbing.pdf",
+            },
+          ],
+        },
       ],
       organizations: [
         {
@@ -513,6 +529,22 @@ export const content = {
             {
               label: "Participation Certificate",
               image: "/certificates/cert-simplilearn-design-thinking.jpg",
+            },
+          ],
+        },
+        {
+          id: "cert-dibimbing",
+          role: "Online Event - Graphic Design & UI/UX Series",
+          org: "Dibimbing",
+          period: "August 2026",
+          points: [
+            "Day one covered UI design hierarchy, including the principles of arranging visual elements for a clearer, more structured interface.",
+            "Day two covered UX through the Design Thinking approach, from understanding user problems to designing solutions centered on their needs.",
+          ],
+          certificates: [
+            {
+              label: "Participation Certificate",
+              image: "/certificates/dibimbing.pdf",
             },
           ],
         },
