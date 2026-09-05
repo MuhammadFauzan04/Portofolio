@@ -331,6 +331,21 @@ export const content = {
           logo: "/pusakabugis-logo.png",
           images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
         },
+        {
+          id: "teazzi",
+          featured: false,
+          tag: "PROJECT",
+          category: "Aplikasi Mobile",
+          title: "Teazzi — Aplikasi Pemesanan Minuman Teh",
+          summary:
+            "Aplikasi pemesanan teh dan minuman kekinian dengan fitur promo, kategori menu, dan pelacakan status pesanan.",
+          description:
+            "Teazzi adalah aplikasi mobile untuk pemesanan minuman teh (tea shop) yang dirancang sebagai eksplorasi UI/UX pribadi. Aplikasi ini mencakup splash screen dengan identitas brand, halaman beranda dengan promo dan kategori menu, rekomendasi produk, hingga halaman pesanan yang menampilkan status pesanan aktif secara real-time dan riwayat transaksi.",
+          meta: ["UI/UX", "Figma", "Mobile App", "Project Pribadi"],
+          accent: "teal",
+          logo: "/teazzi-logo.png",
+          images: ["/teazzi-1.png", "/teazzi-2.png", "/teazzi-3.png"],
+        },
       ],
     },
 
@@ -697,6 +712,21 @@ export const content = {
           accent: "amber",
           logo: "/pusakabugis-logo.png",
           images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
+        },
+        {
+          id: "teazzi",
+          featured: false,
+          tag: "PROJECT",
+          category: "Mobile App",
+          title: "Teazzi — Tea Ordering App",
+          summary:
+            "A tea and specialty drink ordering app featuring promos, menu categories, and real-time order tracking.",
+          description:
+            "Teazzi is a mobile app for ordering tea, designed as a personal UI/UX exploration. It includes a branded splash screen, a home page with promos and menu categories, product recommendations, and an orders page showing real-time active order status alongside transaction history.",
+          meta: ["UI/UX", "Figma", "Mobile App", "Personal Project"],
+          accent: "teal",
+          logo: "/teazzi-logo.png",
+          images: ["/teazzi-1.png", "/teazzi-2.png", "/teazzi-3.png"],
         },
       ],
     },
