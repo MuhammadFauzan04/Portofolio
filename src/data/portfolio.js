@@ -294,6 +294,21 @@ export const content = {
           images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
         },
         {
+          id: "web-belibis",
+          featured: false,
+          tag: "PROJECT",
+          category: "Website",
+          title: "Belibis Web — Website Loket Penjualan Tiket Kapal",
+          summary:
+            "Website khusus untuk petugas loket, digunakan untuk memproses pembelian tiket kapal secara offline dan check-in penumpang langsung di lokasi.",
+          description:
+            "Belibis Web dirancang khusus untuk role petugas loket, digunakan untuk mencatat dan memproses pembelian tiket kapal yang dilakukan secara offline oleh penumpang. Proses check-in juga diharuskan dilakukan langsung di loket, sehingga website ini membantu petugas mengelola transaksi dan verifikasi kehadiran penumpang secara terpusat di satu platform.",
+          meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
+          accent: "indigo",
+          logo: "/belibis-logo.png",
+          images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
+        },
+        {
           id: "project-placeholder-1",
           featured: false,
           tag: "PROJECT",
@@ -674,6 +689,21 @@ export const content = {
           accent: "indigo",
           logo: "/belibis-logo.png",
           images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
+        },
+        {
+          id: "web-belibis",
+          featured: false,
+          tag: "PROJECT",
+          category: "Website",
+          title: "Belibis Web — Ferry Ticket Booking Website",
+          summary:
+            "The website version of Belibis App, letting customers book inter-island ferry tickets in the Sorong region straight from a browser.",
+          description:
+            "Belibis Web is the website version of Belibis App, designed so customers can search ferry schedules, pick seats, book, and pay without installing an app. It rounds out the Belibis ecosystem by offering the same convenient ticket-booking experience on desktop and mobile browsers alike.",
+          meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
+          accent: "indigo",
+          logo: "/belibis-logo.png",
+          images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
         },
         {
           id: "project-placeholder-1",
