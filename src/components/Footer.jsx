@@ -4,7 +4,7 @@ export default function Footer() {
   const { footer } = useContent();
   return (
     <footer className="footer">
-      <div className="container">{footer.text}</div>
+      <div className="footer__inner">{footer.text}</div>
     </footer>
   );
 }

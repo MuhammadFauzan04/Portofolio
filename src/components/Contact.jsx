@@ -28,16 +28,15 @@ const ICONS = {
 };
 
 export default function Contact() {
-  const { contact } = useContent();
+  const { contact, nav } = useContent();
+  const label = nav.links.find((l) => l.href === "#contact")?.label;
   return (
     <section id="contact" className="section contact">
-      <div className="container">
-        <AnimateOnScroll className="contact-box" variant="scale" duration={1}>
-          <div className="contact-box__spotlight" />
-          <div className="contact-box__spotlight-core" />
-
+      <div className="contact__wrap">
+        <AnimateOnScroll className="contact-box" variant="up" duration={1}>
           <div className="contact-box__inner">
             <div className="contact-box__text">
+              <span className="label">[ {label} ]</span>
               <h2>{contact.title}</h2>
               <p>{contact.desc}</p>
               <a

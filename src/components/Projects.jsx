@@ -2,8 +2,9 @@ import { useMemo, useState } from "react";
 import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import ProjectModal from "./ProjectModal";
-import ProjectVisual from "./ProjectVisual";
+import ProjectCover from "./ProjectCover";
 import SplitReveal from "./SplitReveal";
+import { ArrowUpRight } from "./Icons";
 
 export default function Projects() {
   const { projects } = useContent();
@@ -25,13 +26,11 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section projects">
-      <div className="container">
+      <div className="projects__head">
         <AnimateOnScroll>
-          <div className="section__header">
-            <span className="section__label">{projects.sectionLabel}</span>
-            <SplitReveal as="h2" className="section__title" text={projects.sectionTitle} />
-          </div>
+          <span className="label">[ {projects.sectionLabel} ]</span>
         </AnimateOnScroll>
+        <SplitReveal as="h2" className="projects__title" text={projects.sectionTitle} />
 
         <AnimateOnScroll delay={60}>
           <div className="project-filters" role="tablist" aria-label={projects.sectionLabel}>
@@ -58,60 +57,41 @@ export default function Projects() {
             ))}
           </div>
         </AnimateOnScroll>
+      </div>
 
-        <div className="project-showcase" key={filter}>
-          {filtered.map((p, i) => (
-            <button
-              key={p.id}
-              type="button"
-              className={`project-showcase__item ${
-                p.featured ? "project-showcase__item--featured" : ""
-              }`}
-              style={{ "--stagger": `${i * 70}ms` }}
-              onClick={() => setActive(p)}
-            >
-              <span className="project-showcase__media">
-                <ProjectVisual
-                  accent={p.accent}
-                  image={p.images?.[0]}
-                  logo={p.logo}
-                  title={p.title}
-                />
-                <span className="project-showcase__overlay">
-                  <span className="project-showcase__view">
-                    {p.featured ? projects.viewCaseStudyLabel : projects.viewDetailLabel}
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </span>
-                </span>
+      <div className="project-grid" key={filter}>
+        {filtered.map((p, i) => (
+          <button
+            key={p.id}
+            type="button"
+            className="project-card"
+            style={{ "--stagger": `${(i % 2) * 90}ms` }}
+            onClick={() => setActive(p)}
+          >
+            <span className="project-card__media">
+              <ProjectCover project={p} variant="card" />
+              <span className="project-card__tag chip chip--glass">{p.tag}</span>
+              <span className="project-card__go arrow-circle">
+                <ArrowUpRight size={16} />
               </span>
+            </span>
 
-              <span className="project-showcase__body">
-                <span className="project-showcase__top">
-                  <span className="project-showcase__tag">{p.tag}</span>
-                  {p.category && (
-                    <span className="project-showcase__category">{p.category}</span>
-                  )}
-                </span>
-                <span className="project-showcase__title">{p.title}</span>
-                <span className="project-showcase__summary">{p.summary}</span>
-                <span className="project-showcase__meta">
-                  {p.meta.slice(0, 3).map((m) => (
-                    <span key={m}>{m}</span>
-                  ))}
-                </span>
+            <span className="project-card__body">
+              <span className="project-card__row">
+                <span className="project-card__title">{p.title}</span>
+                {p.category && (
+                  <span className="project-card__category">{p.category}</span>
+                )}
               </span>
-            </button>
-          ))}
-        </div>
+              <span className="project-card__summary">{p.summary}</span>
+              <span className="project-card__meta">
+                {p.meta.slice(0, 3).map((m) => (
+                  <span key={m}>{m}</span>
+                ))}
+              </span>
+            </span>
+          </button>
+        ))}
       </div>
 
       <ProjectModal project={active} onClose={() => setActive(null)} />

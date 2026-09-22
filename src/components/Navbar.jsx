@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useContent } from "../context/LanguageContext";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
+import { LogoMark } from "./Icons";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 // Section ids that should be tracked for the scrollspy active-link
@@ -82,43 +83,51 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const half = Math.ceil(nav.links.length / 2);
+  const leftLinks = nav.links.slice(0, half);
+  const rightLinks = nav.links.slice(half);
+
+  const renderLink = (link) => (
+    <a
+      key={link.href}
+      href={link.href}
+      className={activeId === link.href.slice(1) ? "is-active" : ""}
+    >
+      {link.label}
+    </a>
+  );
+
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-      <div className="container navbar__inner">
+      <div className="navbar__inner">
+        <div className="navbar__links navbar__links--left">
+          {leftLinks.map(renderLink)}
+        </div>
+
         <a href="#hero" className="navbar__logo" onClick={closeMenu}>
-          <span className="navbar__logo-dot" />
+          <LogoMark size={18} />
           {nav.brand}
         </a>
 
-        <div className="navbar__links">
-          {nav.links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={activeId === link.href.slice(1) ? "is-active" : ""}
+        <div className="navbar__side">
+          <div className="navbar__links navbar__links--right">
+            {rightLinks.map(renderLink)}
+          </div>
+          <div className="navbar__actions">
+            <LanguageToggle />
+            <ThemeToggle />
+            <button
+              type="button"
+              className={`navbar__burger ${menuOpen ? "navbar__burger--open" : ""}`}
+              aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
             >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="navbar__actions">
-          <LanguageToggle />
-          <ThemeToggle />
-          <a href="#contact" className="navbar__cta">
-            {ui.contactCta}
-          </a>
-          <button
-            type="button"
-            className={`navbar__burger ${menuOpen ? "navbar__burger--open" : ""}`}
-            aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </div>
 

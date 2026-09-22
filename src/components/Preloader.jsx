@@ -76,8 +76,8 @@ export default function Preloader({ onFinish }) {
         <svg className="preloader__ring" viewBox="0 0 64 64">
           <defs>
             <linearGradient id="preloaderRingGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="var(--blue-1)" />
-              <stop offset="100%" stopColor="var(--blue-2)" />
+              <stop offset="0%" stopColor="var(--ink)" />
+              <stop offset="100%" stopColor="var(--ink-soft)" />
             </linearGradient>
           </defs>
           <circle className="preloader__ring-track" cx="32" cy="32" r={RING_RADIUS} />

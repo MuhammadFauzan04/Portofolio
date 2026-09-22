@@ -6,11 +6,11 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import Quote from "./components/Quote";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
-import CornerStickers from "./components/CornerStickers";
 import { ScrollTrigger } from "./lib/gsap";
 
 export default function App() {
@@ -33,17 +33,19 @@ export default function App() {
   return (
     <>
       <Preloader onFinish={() => setLoaded(true)} />
-      <CornerStickers />
       <div className={`site-content${loaded ? " site-content--visible" : ""}`}>
         <ScrollProgress />
         <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
-        <Footer />
+        <main className="frame">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Quote />
+          <Experience />
+          <Contact />
+          <Footer />
+        </main>
         <BackToTop />
       </div>
     </>

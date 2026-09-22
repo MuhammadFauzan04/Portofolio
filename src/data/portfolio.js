@@ -9,10 +9,11 @@ export const content = {
     nav: {
       brand: "Fauzan",
       links: [
+        { label: "Beranda", href: "#hero" },
         { label: "Tentang", href: "#about" },
         { label: "Skill & Proses", href: "#skills" },
-        { label: "Pengalaman", href: "#experience" },
         { label: "Karya", href: "#projects" },
+        { label: "Pengalaman", href: "#experience" },
         { label: "Kontak", href: "#contact" },
       ],
     },
@@ -36,6 +37,7 @@ export const content = {
       cityLabel: "Makassar, Indonesia",
       localTimeSuffix: "WITA — waktu setempat",
       scrollLabel: "SCROLL",
+      cardLabel: "Lihat proyek ini",
       dragHint: "Tarik & lepas kartunya 👆",
     },
 
@@ -44,13 +46,15 @@ export const content = {
       sectionTitle: "Desain yang lahir dari riset, bukan tebakan.",
       photo: "/profile.png",
       photoAlt: "Foto profil",
+      author: "Muhammad Fauzan — UI/UX Designer",
+      statLabels: { projects: "Proyek\nDikerjakan", internships: "Pengalaman\nMagang", organizations: "Organisasi\nDiikuti" },
       badges: ["UI/UX Designer", "User-Centered Design", "Sistem Informasi"],
       description:
         "Saya adalah UI/UX Designer dengan latar belakang Sistem Informasi di Universitas Hasanuddin. Saya memiliki ketertarikan dalam merancang produk digital yang tidak hanya menarik secara visual, tetapi juga mampu memberikan pengalaman pengguna yang intuitif dan efektif.",
       academic:
         "Saya percaya bahwa desain yang baik lahir dari pemahaman yang mendalam terhadap kebutuhan pengguna, bukan sekadar mengikuti tren. Oleh karena itu, saya selalu mengutamakan proses riset, analisis, dan pemecahan masalah dalam setiap proyek yang saya kerjakan.",
       secondary:
-        "Selain aktif mengembangkan kemampuan di bidang UI/UX, saya juga senang mempelajari teknologi baru dan berkolaborasi dengan berbagai pihak untuk mengubah ide menjadi solusi digital yang bermanfaat.",
+        "Proses kreatif saya digerakkan oleh riset mendalam, pengujian ketergunaan, dan penerapan prinsip tata letak yang presisi. Saya berfokus pada penyusunan user journey yang mulus, alur kerja yang terstruktur, serta visual yang adaptif terhadap berbagai kebutuhan pengguna.   Dengan pemahaman teknis mengenai struktur frontend dan kolaborasi tim, saya mampu mengawal ide produk dari tahap konsep awal hingga siap dieksekusi oleh tim developer. Saya siap berkontribusi dalam membangun solusi digital yang berorientasi pada hasil dan pengalaman pengguna terbaik.",
     },
 
     skills: {
@@ -73,21 +77,25 @@ export const content = {
           num: "01",
           title: "Discover",
           desc: "Memahami konteks pengguna, memetakan kebutuhan, dan mengidentifikasi masalah nyata melalui wawancara dan observasi.",
+          image: "/discover.jpg",
         },
         {
           num: "02",
           title: "Design",
           desc: "Menerjemahkan temuan riset menjadi wireframe, alur pengguna, dan desain antarmuka yang konsisten.",
+          image: "/design.jpg",
         },
         {
           num: "03",
           title: "Test",
           desc: "Menguji prototipe menggunakan metode seperti Maze dan System Usability Scale untuk memvalidasi keputusan desain secara terukur.",
+          image: "/test.jpg",
         },
         {
           num: "04",
           title: "Deliver",
           desc: "Menyempurnakan desain berdasarkan hasil pengujian dan menyiapkan dokumentasi yang siap diimplementasikan.",
+          image: "/deliver.jpg",
         },
       ],
     },
@@ -238,6 +246,7 @@ export const content = {
           featured: true,
           tag: "STUDI KASUS UTAMA",
           category: "Website",
+          kind: "web",
           title: "MediLink — Sistem Informasi Manajemen Rumah Sakit",
           summary:
             "Perancangan prototipe UI/UX untuk sistem manajemen rumah sakit, studi kasus RSUD Wakatobi.",
@@ -253,6 +262,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "CBR-Dent — Sistem Manajemen Klinik Gigi",
           summary:
             "Sistem manajemen klinik gigi berbasis Case-Based Reasoning (CBR) untuk rekomendasi desain obturator secara otomatis.",
@@ -268,6 +278,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Aplikasi Mobile",
+          kind: "mobile",
           title: "Yalla App",
           summary:
             "Aplikasi travel penerbangan umrah yang menghubungkan berbagai penyelenggara travel dalam satu platform.",
@@ -283,6 +294,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Aplikasi Mobile",
+          kind: "mobile",
           title: "Belibis App",
           summary:
             "Aplikasi pemesanan tiket kapal online untuk memudahkan perjalanan antar pulau di wilayah Sorong.",
@@ -298,6 +310,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "Belibis Web — Website Loket Penjualan Tiket Kapal",
           summary:
             "Website khusus untuk petugas loket, digunakan untuk memproses pembelian tiket kapal secara offline dan check-in penumpang langsung di lokasi.",
@@ -313,6 +326,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Aplikasi Mobile",
+          kind: "mobile",
           title: "Sinergi - Ji App",
           summary:
             "SINERGI-JI Aplikasi pelaporan dan pemantauan gangguan jaringan internet untuk instansi pemerintah di Kota Makassar.",
@@ -329,13 +343,14 @@ export const content = {
           ],
           accent: "violet",
           logo: "/sinergiji-logo.png",
-          images: ["/sinergiji-1.png", "/sinergiji-2.png", "/sinergiji-3.png"],
+          images: ["/sinergiji-2.png", "/sinergiji-3.png", "/sinergiji-1.png"],
         },
         {
           id: "project-placeholder-2",
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "Pusaka Bugis Web",
           summary:
             "Website eksplorasi budaya keris Bugis di Kabupaten Bone, dilengkapi fitur scan pamor keris",
@@ -351,6 +366,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Aplikasi Mobile",
+          kind: "mobile",
           title: "Teazzi — Aplikasi Pemesanan Minuman Teh",
           summary:
             "Aplikasi pemesanan teh dan minuman kekinian dengan fitur promo, kategori menu, dan pelacakan status pesanan.",
@@ -406,10 +422,11 @@ export const content = {
     nav: {
       brand: "Fauzan",
       links: [
+        { label: "Home", href: "#hero" },
         { label: "About", href: "#about" },
         { label: "Skills & Process", href: "#skills" },
-        { label: "Experience", href: "#experience" },
         { label: "Work", href: "#projects" },
+        { label: "Experience", href: "#experience" },
         { label: "Contact", href: "#contact" },
       ],
     },
@@ -433,6 +450,7 @@ export const content = {
       cityLabel: "Makassar, Indonesia",
       localTimeSuffix: "WITA — local time",
       scrollLabel: "SCROLL",
+      cardLabel: "See about this project",
       dragHint: "Drag & drop the card 👆",
     },
 
@@ -441,6 +459,8 @@ export const content = {
       sectionTitle: "Design born from research, not guesswork.",
       photo: "/profile.png",
       photoAlt: "Profile photo",
+      author: "Muhammad Fauzan — UI/UX Designer",
+      statLabels: { projects: "Projects\nDelivered", internships: "Internship\nExperiences", organizations: "Organizations\nJoined" },
       badges: ["UI/UX Designer", "User-Centered Design", "Information Systems"],
       description:
         "I'm a UI/UX Designer with an Information Systems background from Universitas Hasanuddin. I'm interested in designing digital products that are not only visually appealing, but also deliver an intuitive and effective user experience.",
@@ -470,21 +490,25 @@ export const content = {
           num: "01",
           title: "Discover",
           desc: "Understanding user context, mapping needs, and identifying real problems through interviews and observation.",
+          image: "/discover.jpg",
         },
         {
           num: "02",
           title: "Design",
           desc: "Translating research findings into wireframes, user flows, and consistent interface designs.",
+          image: "/design.jpg",
         },
         {
           num: "03",
           title: "Test",
           desc: "Testing prototypes using methods like Maze and the System Usability Scale to validate design decisions with real data.",
+          image: "/test.jpg",
         },
         {
           num: "04",
           title: "Deliver",
           desc: "Refining the design based on testing results and preparing documentation ready for implementation.",
+          image: "/deliver.jpg",
         },
       ],
     },
@@ -635,6 +659,7 @@ export const content = {
           featured: true,
           tag: "MAIN CASE STUDY",
           category: "Website",
+          kind: "web",
           title: "MediLink — Hospital Management Information System",
           summary:
             "UI/UX prototype design for a hospital management system, case study of RSUD Wakatobi.",
@@ -650,6 +675,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "CBR-Dent — Dental Clinic Management System",
           summary:
             "A Case-Based Reasoning (CBR) dental clinic management system for automatic obturator design recommendations.",
@@ -665,6 +691,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Mobile App",
+          kind: "mobile",
           title: "Yalla App",
           summary:
             "An Umrah flight travel app that connects multiple travel agencies on a single platform.",
@@ -680,6 +707,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Mobile App",
+          kind: "mobile",
           title: "Belibis App",
           summary:
             "An online ferry ticket booking app that makes inter-island travel in the Sorong region easier.",
@@ -695,6 +723,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "Belibis Web — Ferry Ticket Booking Website",
           summary:
             "The website version of Belibis App, letting customers book inter-island ferry tickets in the Sorong region straight from a browser.",
@@ -710,6 +739,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Mobile App",
+          kind: "mobile",
           title: "Sinergi - Ji App",
           summary:
             "SINERGI-JI is an app for reporting and monitoring internet network disruptions for government agencies in Makassar City.",
@@ -726,13 +756,14 @@ export const content = {
           ],
           accent: "violet",
           logo: "/sinergiji-logo.png",
-          images: ["/sinergiji-1.png", "/sinergiji-2.png", "/sinergiji-3.png"],
+          images: ["/sinergiji-2.png", "/sinergiji-3.png", "/sinergiji-1.png"],
         },
         {
           id: "project-placeholder-2",
           featured: false,
           tag: "PROJECT",
           category: "Website",
+          kind: "web",
           title: "Pusaka Bugis Web",
           summary:
             "A website exploring Bugis keris (dagger) culture in Bone Regency, featuring a keris pamor pattern scanner.",
@@ -748,6 +779,7 @@ export const content = {
           featured: false,
           tag: "PROJECT",
           category: "Mobile App",
+          kind: "mobile",
           title: "Teazzi — Tea Ordering App",
           summary:
             "A tea and specialty drink ordering app featuring promos, menu categories, and real-time order tracking.",

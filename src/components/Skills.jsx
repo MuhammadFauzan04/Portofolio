@@ -1,144 +1,87 @@
-import { useLayoutEffect, useRef } from "react";
+import { useState } from "react";
 import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import SplitReveal from "./SplitReveal";
-import { gsap, prefersReducedMotion } from "../lib/gsap";
-
-function ProcessConnectors({ count }) {
-  const width = 1000;
-  const segment = width / count;
-  const centers = Array.from({ length: count }, (_, i) => segment * (i + 0.5));
-
-  return (
-    <svg
-      className="process__connectors"
-      viewBox="0 0 1000 260"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      {centers.slice(0, -1).map((x1, i) => {
-        const x2 = centers[i + 1];
-        const up = i % 2 === 0;
-        const y = up ? 78 : 182;
-        const cy = up ? 6 : 254;
-        const midX = (x1 + x2) / 2;
-        return (
-          <g className="process__connector" key={`${x1}-${x2}`}>
-            <path d={`M ${x1} ${y} Q ${midX} ${cy} ${x2} ${y}`} />
-            <circle cx={x1} cy={y} r="6" />
-            <circle cx={x2} cy={y} r="6" />
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
+import { ArrowUpRight } from "./Icons";
 
 export default function Skills() {
-  const { skills } = useContent();
-  const flowRef = useRef(null);
-
-  // Draws each connector line (and pops its endpoint dots) progressively as
-  // the process flow scrolls through the viewport, tying the animation
-  // directly to scroll position rather than just fading in.
-  useLayoutEffect(() => {
-    const flow = flowRef.current;
-    if (!flow) return;
-
-    if (prefersReducedMotion()) return;
-
-    const ctx = gsap.context(() => {
-      const connectors = flow.querySelectorAll(".process__connector");
-      connectors.forEach((g, i) => {
-        const path = g.querySelector("path");
-        const dots = g.querySelectorAll("circle");
-        if (!path) return;
-        const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-        gsap.set(dots, { scale: 0, transformOrigin: "center" });
-
-        gsap.to(path, {
-          strokeDashoffset: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: flow,
-            start: "top 75%",
-            end: "bottom 60%",
-            scrub: 0.6,
-          },
-        });
-        gsap.to(dots, {
-          scale: 1,
-          duration: 0.3,
-          delay: i * 0.05,
-          scrollTrigger: {
-            trigger: flow,
-            start: "top 65%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      });
-    }, flow);
-
-    return () => ctx.revert();
-  }, []);
+  const { skills, hero } = useContent();
+  const [active, setActive] = useState(0);
 
   return (
-    <section id="skills" className="section skills">
-      <div className="container">
-        <AnimateOnScroll>
-          <div className="section__header">
-            <span className="section__label">{skills.sectionLabel}</span>
-            <SplitReveal
-              as="h2"
-              className="section__title"
-              text={skills.sectionTitle}
-            />
-          </div>
-        </AnimateOnScroll>
-
-        <div className="skill-row">
-          {skills.items.map((item, i) => (
-            <AnimateOnScroll key={item} delay={i * 40} variant="scale" duration={0.6}>
-              <span className="skill-chip">{item}</span>
-            </AnimateOnScroll>
-          ))}
-        </div>
-
-        <div className="process">
+    <section id="skills" className="section services">
+      <div className="services__head">
+        <div>
           <AnimateOnScroll>
-            <div className="section__header process__header">
-              <span className="section__label">{skills.processLabel}</span>
-              <SplitReveal
-                as="h3"
-                className="section__title section__title--sm"
-                text={skills.processTitle}
-              />
-            </div>
+            <span className="label">[ {skills.sectionLabel} ]</span>
           </AnimateOnScroll>
-
-          <div className="process__flow" ref={flowRef}>
-            <ProcessConnectors count={skills.process.length} />
-
-            <div className="process__grid">
-              {skills.process.map((step, i) => (
-                <AnimateOnScroll
-                  key={step.num}
-                  delay={i * 100}
-                  variant="scale"
-                  className="process__card-slot"
-                >
-                  <div className="process__card">
-                    <span className="process__num">{step.num}</span>
-                    <h4>{step.title}</h4>
-                    <p>{step.desc}</p>
-                  </div>
-                </AnimateOnScroll>
-              ))}
-            </div>
-          </div>
+          <SplitReveal
+            as="h2"
+            className="services__title"
+            text={skills.sectionTitle}
+          />
         </div>
+
+        <AnimateOnScroll className="services__chips" delay={100}>
+          {skills.items.map((item) => (
+            <span className="chip" key={item}>
+              {item}
+            </span>
+          ))}
+        </AnimateOnScroll>
       </div>
+
+      <AnimateOnScroll className="services__sub">
+        <span className="label">[ {skills.processLabel} ]</span>
+        <h3>{skills.processTitle}</h3>
+      </AnimateOnScroll>
+
+      <ul className="service-list">
+        {skills.process.map((step, i) => {
+          const open = active === i;
+          return (
+            <li
+              key={step.num}
+              className={`service ${open ? "is-active" : ""}`}
+              onMouseEnter={() => setActive(i)}
+            >
+              <button
+                type="button"
+                className="service__row"
+                aria-expanded={open}
+                onClick={() => setActive(i)}
+                onFocus={() => setActive(i)}
+              >
+                <span className="service__num">{step.num}</span>
+                <span className="service__title">{step.title}</span>
+                <span className="service__desc">{step.desc}</span>
+              </button>
+
+              <div className="service__panel" aria-hidden={!open}>
+                <div className="service__panel-inner">
+                  <div className="service__preview">
+                    {step.image && (
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        className="service__preview-img"
+                      />
+                    )}
+                    <a
+                      href="#projects"
+                      className="arrow-circle service__go"
+                      tabIndex={open ? 0 : -1}
+                      aria-label={hero.ctaPrimary.label}
+                    >
+                      <ArrowUpRight size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

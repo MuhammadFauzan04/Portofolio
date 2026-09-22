@@ -52,7 +52,7 @@ export default function CertificateModal({ item, onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="modal-content certificate-modal"
+        className="modal-card certificate-modal"
         role="dialog"
         aria-modal="true"
         aria-label={ui.certificateOf(item.role, item.org)}

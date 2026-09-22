@@ -1,5 +1,21 @@
 # Update log
 
+## Revisi: scrollbar popup disembunyikan
+- `.modal-card` (dipakai popup proyek & sertifikat) tetap bisa di-scroll, tapi scrollbar-nya disembunyikan di semua browser (`scrollbar-width: none` untuk Firefox, `::-webkit-scrollbar { display: none }` untuk Chrome/Safari, `-ms-overflow-style: none` untuk Edge lama).
+
+## Revisi: popup detail proyek + transisi tema
+- **Popup proyek/sertifikat dirombak** (`ProjectModal.jsx`, `CertificateModal.jsx`, `ProjectCarousel.jsx`): banner cover lebar di atas (pakai `ProjectCover` varian baru `modal`), badge logo + tombol tutup melayang di atasnya, body dengan judul/deskripsi/tag rapi, lalu galeri screenshot dengan tombol panah kiri-kanan + dot progres + counter "01 / 03" — bukan cuma titik seperti sebelumnya. Carousel sekarang manual sepenuhnya (tidak lagi auto-geser sendiri).
+- **Animasi transisi gelap/terang dihapus total** (`context/ThemeContext.jsx`): efek "tetesan cair" (liquid drip) yang menutupi layar tiap ganti tema sudah dibuang beserta CSS-nya (`.theme-liquid*`). Ganti tema sekarang cuma crossfade warna biasa (0.4s), tanpa overlay apa pun.
+
+## Redesign: gaya "Nexform" (hitam, hairline grid, tile warna)
+- `src/index.css` ditulis ulang dari nol (versi lama ada di riwayat git). Tema default sekarang **gelap**; mode terang = layout yang sama, warna dibalik.
+- Urutan section mengikuti referensi: Navbar (logo di tengah) → Hero → About (misi + statistik) → Skills (daftar proses, accordion) → Projects → Quote + strip tile warna → Experience → Contact → Footer.
+- Komponen baru: `ProjectCover.jsx` (mockup di atas warna solid), `Quote.jsx`, `Icons.jsx`, `lib/thumb.js`.
+- Dihapus: `HeroIdCard`, `CornerStickers`, `ProjectVisual` (diganti desain baru).
+- Aset: `public/thumbs/*.webp` (salinan ringan screenshot proyek, ±64 MB → ±1,3 MB) dan `public/profile-cutout.webp`. File asli tidak diubah.
+- Data: field `kind` ("web"/"mobile") di tiap proyek; link "Beranda" di nav; `hero.cardLabel`, `about.author`, `about.statLabels` (id + en).
+- Font: Inter Tight (Google Fonts) menggantikan Poppins/Fraunces/WindSong.
+
 ## Cara menjalankan
 ```
 npm install

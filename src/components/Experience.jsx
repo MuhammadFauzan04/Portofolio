@@ -1,25 +1,15 @@
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useContent } from "../context/LanguageContext";
 import AnimateOnScroll from "./AnimateOnScroll";
 import CertificateModal from "./CertificateModal";
 import SplitReveal from "./SplitReveal";
+import { ArrowLeft, ArrowRight } from "./Icons";
 
 export default function Experience() {
   const { experience } = useContent();
   const [activeTab, setActiveTab] = useState("internships");
   const [activeCertificate, setActiveCertificate] = useState(null);
   const trackRef = useRef(null);
-
-  const particles = useMemo(() => {
-    return Array.from({ length: 18 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      size: Math.random() * 4 + 3,
-      duration: Math.random() * 10 + 12,
-      delay: Math.random() * 10,
-      drift: (Math.random() - 0.5) * 60,
-    }));
-  }, []);
 
   const items = experience[activeTab];
 
@@ -31,35 +21,14 @@ export default function Experience() {
 
   return (
     <section id="experience" className="section experience">
-      <div className="experience__bg">
-        <div className="experience__blob experience__blob--a" />
-        <div className="experience__blob experience__blob--b" />
-        <div className="experience__particles">
-          {particles.map((p) => (
-            <span
-              key={p.id}
-              className="experience__particle"
-              style={{
-                left: `${p.left}%`,
-                width: `${p.size}px`,
-                height: `${p.size}px`,
-                animationDuration: `${p.duration}s`,
-                animationDelay: `${p.delay}s`,
-                "--drift": `${p.drift}px`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="container">
+      <div className="experience__inner">
         <AnimateOnScroll>
-          <div className="section__header experience__header">
+          <div className="experience__header">
             <div>
-              <span className="section__label">{experience.sectionLabel}</span>
+              <span className="label">[ {experience.sectionLabel} ]</span>
               <SplitReveal
                 as="h2"
-                className="section__title"
+                className="experience__title"
                 text={experience.sectionTitle}
               />
             </div>
@@ -71,7 +40,7 @@ export default function Experience() {
                 onClick={() => scrollBy(-1)}
                 aria-label={experience.prevLabel}
               >
-                ←
+                <ArrowLeft size={16} />
               </button>
               <button
                 type="button"
@@ -79,7 +48,7 @@ export default function Experience() {
                 onClick={() => scrollBy(1)}
                 aria-label={experience.nextLabel}
               >
-                →
+                <ArrowRight size={16} />
               </button>
             </div>
           </div>
