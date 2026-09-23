@@ -109,21 +109,33 @@ export default function CertificateModal({ item, onClose }) {
         </div>
 
         {slides.length > 1 && (
-          <div className="certificate-modal__dots">
-            {slides.map((slide, idx) => (
-              <button
-                key={slide.image}
-                type="button"
-                className={`certificate-modal__dot ${
-                  idx === activeIndex ? "certificate-modal__dot--active" : ""
-                }`}
-                onClick={() => {
-                  setImgError(false);
-                  setActiveIndex(idx);
-                }}
-                aria-label={slide.label}
-              />
-            ))}
+          <div className="certificate-modal__thumbs">
+            {slides.map((slide, idx) => {
+              const thumbIsPdf = slide.image?.toLowerCase().endsWith(".pdf");
+              return (
+                <button
+                  key={slide.image}
+                  type="button"
+                  className={`certificate-modal__thumb ${
+                    idx === activeIndex
+                      ? "certificate-modal__thumb--active"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    setImgError(false);
+                    setActiveIndex(idx);
+                  }}
+                  title={slide.label}
+                  aria-label={slide.label}
+                >
+                  {thumbIsPdf ? (
+                    <span className="certificate-modal__thumb-pdf">PDF</span>
+                  ) : (
+                    <img src={slide.image} alt="" loading="lazy" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         )}
 

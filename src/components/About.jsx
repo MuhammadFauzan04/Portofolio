@@ -20,12 +20,12 @@ const ART_LABELS = {
 };
 
 export default function About() {
-  const { about, projects, experience } = useContent();
+  const { about, experience } = useContent();
   const { lang } = useLanguage();
   const trackRef = useRef(null);
 
   const stats = [
-    { value: projects.list.length, label: about.statLabels.projects },
+    { value: "10+", label: about.statLabels.projects },
     { value: experience.internships.length, label: about.statLabels.internships },
     { value: experience.organizations.length, label: about.statLabels.organizations },
   ];

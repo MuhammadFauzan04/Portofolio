@@ -81,14 +81,38 @@ export default function Experience() {
               <span className="experience__card-num">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="experience__period">{item.period}</span>
-              <h4>{item.role}</h4>
-              <p className="experience__org">{item.org}</p>
-              <ul>
-                {item.points.map((point, idx) => (
-                  <li key={idx}>{point}</li>
-                ))}
-              </ul>
+              {item.periods ? (
+                <>
+                  <h4>{item.org}</h4>
+                  <div className="experience__periods">
+                    {item.periods.map((p, pi) => (
+                      <div className="experience__period-block" key={pi}>
+                        <div className="experience__period-head">
+                          <span className="experience__period">{p.period}</span>
+                          <span className="experience__period-role">{p.role}</span>
+                        </div>
+                        {p.org && <p className="experience__org">{p.org}</p>}
+                        <ul>
+                          {p.points.map((point, idx) => (
+                            <li key={idx}>{point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <span className="experience__period">{item.period}</span>
+                  <h4>{item.role}</h4>
+                  <p className="experience__org">{item.org}</p>
+                  <ul>
+                    {item.points.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
               {(item.certificate || item.certificates?.length > 0) && (
                 <button
                   type="button"

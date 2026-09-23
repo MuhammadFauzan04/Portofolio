@@ -113,17 +113,6 @@ export const content = {
       ],
       internships: [
         {
-          id: "intern-diskominfo",
-          role: "UI/UX Designer & Frontend Developer",
-          org: "Dinas Komunikasi dan Informatika Kota Makassar",
-          period: "Januari 2025 — Juni 2025",
-          points: [
-            "Merancang UI/UX untuk berbagai sistem dan layanan digital Pemerintah Kota Makassar, mulai dari user flow, wireframe, hingga prototype..",
-            "Mengembangkan frontend yang responsif serta berkontribusi pada 6 proyek digital, termasuk SINERGI-JI, MARVEC Dashboard, Website Buku Tamu DISKOMINFO, Dashboard Kelurahan Cantik, Website AI CCTV, dan Dashboard Analisis CCTV Lorong.",
-          ],
-          certificate: "/sertifikat-diskominfo.jpg",
-        },
-        {
           id: "intern-choice",
           role: "UI/UX Designer",
           org: "CV. Choice Indonesia",
@@ -134,25 +123,64 @@ export const content = {
           ],
           certificate: "/sertifikat-choice.jpg",
         },
+        {
+          id: "intern-diskominfo",
+          role: "UI/UX Designer & Frontend Developer",
+          org: "Dinas Komunikasi dan Informatika Kota Makassar",
+          period: "Januari 2025 — Juni 2025",
+          points: [
+            "Merancang UI/UX untuk berbagai sistem dan layanan digital Pemerintah Kota Makassar, mulai dari user flow, wireframe, hingga prototype..",
+            "Mengembangkan frontend yang responsif serta berkontribusi pada 6 proyek digital, termasuk SINERGI-JI, MARVEC Dashboard, Website Buku Tamu DISKOMINFO, Dashboard Kelurahan Cantik, Website AI CCTV, dan Dashboard Analisis CCTV Lorong.",
+          ],
+          certificate: "/sertifikat-diskominfo.jpg",
+        },
       ],
       certifications: [
         {
-          id: "cert-rakamin-uiux",
-          role: "Kickstart UI UX Design Journey",
-          org: "Rakamin Academy",
-          period: "Agustus 2026",
+          id: "cert-dibimbing-dsf54",
+          role: "DSF 54.0 - Design Graphic & UI/UX",
+          org: "Dibimbing",
+          period: "September 2026",
           points: [
-            "Mengikuti program Flexible Kickstart UI UX Design Journey untuk mempelajari dasar-dasar proses dan alur kerja UI/UX Design secara terstruktur.",
-            "Menyelesaikan program dengan meraih predikat Excellent Grade.",
+            "Mengikuti Design Sprint Festival (DSF) 54.0 bertema Graphic Design & UI/UX pada 14–18 September 2026.",
+            "Memperdalam praktik desain grafis dan UI/UX melalui sesi pelatihan intensif bersama praktisi Dibimbing.",
           ],
           certificates: [
             {
               label: "Sertifikat Partisipasi",
-              image: "/certificates/rakamin-uiux-participation.jpg",
+              image: "/certificates/dibimbing-dsf54.jpg",
             },
+          ],
+        },
+        {
+          id: "cert-myskill-ux-research",
+          role: "Introduction to UX Research",
+          org: "MySkill",
+          period: "September 2026",
+          points: [
+            "Menyelesaikan Short Class UI/UX Research and Design yang diselenggarakan oleh MySkill.",
+            "Mempelajari dasar-dasar riset pengguna (UX Research) sebagai bagian dari proses perancangan produk digital.",
+          ],
+          certificates: [
             {
-              label: "Sertifikat Pencapaian",
-              image: "/certificates/rakamin-uiux-achievement.jpg",
+              label: "Sertifikat Partisipasi",
+              image: "/certificates/myskill-ux-research.jpg",
+            },
+          ],
+        },
+        {
+          id: "cert-dibimbing",
+          role: "Event Online - Graphic Design & UI/UX Series",
+          org: "Dibimbing",
+          period: "Agustus 2026",
+          points: [
+            "Hari pertama membahas hierarki desain (design hierarchy) dalam UI, mencakup prinsip penataan elemen visual agar antarmuka lebih terstruktur dan mudah dipahami pengguna.",
+            "Hari kedua membahas UX melalui pendekatan Design Thinking, mulai dari memahami permasalahan pengguna hingga merancang solusi yang berpusat pada kebutuhan mereka.",
+          ],
+          certificates: [
+            {
+              label: "Sertifikat Partisipasi",
+              image: "/certificates/dibimbing-cert.jpg",
             },
           ],
         },
@@ -174,43 +202,27 @@ export const content = {
           ],
         },
         {
-          id: "cert-dibimbing",
-          role: "Event Online - Graphic Design & UI/UX Series",
-          org: "Dibimbing",
+          id: "cert-rakamin-uiux",
+          role: "Kickstart UI UX Design Journey",
+          org: "Rakamin Academy",
           period: "Agustus 2026",
           points: [
-            "Hari pertama membahas hierarki desain (design hierarchy) dalam UI, mencakup prinsip penataan elemen visual agar antarmuka lebih terstruktur dan mudah dipahami pengguna.",
-            "Hari kedua membahas UX melalui pendekatan Design Thinking, mulai dari memahami permasalahan pengguna hingga merancang solusi yang berpusat pada kebutuhan mereka.",
+            "Mengikuti program Flexible Kickstart UI UX Design Journey untuk mempelajari dasar-dasar proses dan alur kerja UI/UX Design secara terstruktur.",
+            "Menyelesaikan program dengan meraih predikat Excellent Grade.",
           ],
           certificates: [
             {
               label: "Sertifikat Partisipasi",
-              image: "/certificates/dibimbing-cert.jpg",
+              image: "/certificates/rakamin-uiux-participation.jpg",
+            },
+            {
+              label: "Sertifikat Pencapaian",
+              image: "/certificates/rakamin-uiux-achievement.jpg",
             },
           ],
         },
       ],
       organizations: [
-        {
-          id: "org-himatika",
-          role: "Anggota Eksternal",
-          org: "Himpunan Mahasiswa Matematika (HIMATIKA) FMIPA Unhas",
-          period: "September 2024 — Juli 2025",
-          points: [
-            "Menjalin hubungan dan kerja sama dengan pihak eksternal himpunan.",
-            "Berkontribusi dalam program kerja bidang hubungan eksternal.",
-          ],
-        },
-        {
-          id: "org-hmi-mipa",
-          role: "Sekretaris Bidang PTKP",
-          org: "Himpunan Mahasiswa Islam (HMI) Komisariat MIPA Unhas",
-          period: "September 2024 — Desember 2025",
-          points: [
-            "Mengelola administrasi dan dokumentasi kegiatan Bidang PTKP secara berkala.",
-            "Mendukung koordinasi dan pelaksanaan program kerja Bidang PTKP bersama pengurus lainnya.",
-          ],
-        },
         {
           id: "org-ltmi",
           role: "Deputi Teknologi Pendidikan dan Pemberdayaan SDM",
@@ -223,12 +235,35 @@ export const content = {
         },
         {
           id: "org-hmi",
-          role: "Sekretaris Umum",
           org: "Himpunan Mahasiswa Islam (HMI)",
-          period: "Januari 2026",
+          periods: [
+            {
+              role: "Sekretaris Umum",
+              period: "Januari 2026",
+              points: [
+                "Mengelola administrasi dan kesekretariatan organisasi secara menyeluruh.",
+                "Mendukung koordinasi program kerja antar bidang di kepengurusan.",
+              ],
+            },
+            {
+              role: "Sekretaris Bidang PTKP",
+              org: "Komisariat MIPA Unhas",
+              period: "September 2024 — Desember 2025",
+              points: [
+                "Mengelola administrasi dan dokumentasi kegiatan Bidang PTKP secara berkala.",
+                "Mendukung koordinasi dan pelaksanaan program kerja Bidang PTKP bersama pengurus lainnya.",
+              ],
+            },
+          ],
+        },
+        {
+          id: "org-himatika",
+          role: "Anggota Eksternal",
+          org: "Himpunan Mahasiswa Matematika (HIMATIKA) FMIPA Unhas",
+          period: "September 2024 — Juli 2025",
           points: [
-            "Mengelola administrasi dan kesekretariatan organisasi secara menyeluruh.",
-            "Mendukung koordinasi program kerja antar bidang di kepengurusan.",
+            "Menjalin hubungan dan kerja sama dengan pihak eksternal himpunan.",
+            "Berkontribusi dalam program kerja bidang hubungan eksternal.",
           ],
         },
       ],
@@ -526,17 +561,6 @@ export const content = {
       ],
       internships: [
         {
-          id: "intern-diskominfo",
-          role: "UI/UX Designer & Frontend Developer",
-          org: "Communication and Informatics Agency of Makassar City (Diskominfo)",
-          period: "January 2025 — June 2025",
-          points: [
-            "Designed UI/UX for various digital systems and services for the Makassar City Government, from user flow and wireframes through to prototypes.",
-            "Developed responsive frontends and contributed to 6 digital projects, including SINERGI-JI, the MARVEC Dashboard, the DISKOMINFO Guest Book website, the Kelurahan Cantik Dashboard, the AI CCTV website, and the Lorong CCTV Analysis Dashboard.",
-          ],
-          certificate: "/sertifikat-diskominfo.jpg",
-        },
-        {
           id: "intern-choice",
           role: "UI/UX Designer",
           org: "CV. Choice Indonesia",
@@ -547,25 +571,64 @@ export const content = {
           ],
           certificate: "/sertifikat-choice.jpg",
         },
+        {
+          id: "intern-diskominfo",
+          role: "UI/UX Designer & Frontend Developer",
+          org: "Communication and Informatics Agency of Makassar City (Diskominfo)",
+          period: "January 2025 — June 2025",
+          points: [
+            "Designed UI/UX for various digital systems and services for the Makassar City Government, from user flow and wireframes through to prototypes.",
+            "Developed responsive frontends and contributed to 6 digital projects, including SINERGI-JI, the MARVEC Dashboard, the DISKOMINFO Guest Book website, the Kelurahan Cantik Dashboard, the AI CCTV website, and the Lorong CCTV Analysis Dashboard.",
+          ],
+          certificate: "/sertifikat-diskominfo.jpg",
+        },
       ],
       certifications: [
         {
-          id: "cert-rakamin-uiux",
-          role: "Kickstart UI UX Design Journey",
-          org: "Rakamin Academy",
-          period: "August 2026",
+          id: "cert-dibimbing-dsf54",
+          role: "DSF 54.0 - Design Graphic & UI/UX",
+          org: "Dibimbing",
+          period: "September 2026",
           points: [
-            "Completed the Flexible Kickstart UI UX Design Journey program to learn the fundamentals of the UI/UX design process and workflow in a structured way.",
-            "Finished the program with an Excellent Grade.",
+            "Took part in Design Sprint Festival (DSF) 54.0 on Graphic Design & UI/UX, held 14–18 September 2026.",
+            "Deepened graphic design and UI/UX practice through an intensive training track led by Dibimbing practitioners.",
           ],
           certificates: [
             {
               label: "Participation Certificate",
-              image: "/certificates/rakamin-uiux-participation.jpg",
+              image: "/certificates/dibimbing-dsf54.jpg",
             },
+          ],
+        },
+        {
+          id: "cert-myskill-ux-research",
+          role: "Introduction to UX Research",
+          org: "MySkill",
+          period: "September 2026",
+          points: [
+            "Completed the UI/UX Research and Design Short Class held by MySkill.",
+            "Learned the fundamentals of UX Research as part of the digital product design process.",
+          ],
+          certificates: [
             {
-              label: "Achievement Certificate",
-              image: "/certificates/rakamin-uiux-achievement.jpg",
+              label: "Participation Certificate",
+              image: "/certificates/myskill-ux-research.jpg",
+            },
+          ],
+        },
+        {
+          id: "cert-dibimbing",
+          role: "Online Event - Graphic Design & UI/UX Series",
+          org: "Dibimbing",
+          period: "August 2026",
+          points: [
+            "Day one covered UI design hierarchy, including the principles of arranging visual elements for a clearer, more structured interface.",
+            "Day two covered UX through the Design Thinking approach, from understanding user problems to designing solutions centered on their needs.",
+          ],
+          certificates: [
+            {
+              label: "Participation Certificate",
+              image: "/certificates/dibimbing-cert.jpg",
             },
           ],
         },
@@ -587,43 +650,27 @@ export const content = {
           ],
         },
         {
-          id: "cert-dibimbing",
-          role: "Online Event - Graphic Design & UI/UX Series",
-          org: "Dibimbing",
+          id: "cert-rakamin-uiux",
+          role: "Kickstart UI UX Design Journey",
+          org: "Rakamin Academy",
           period: "August 2026",
           points: [
-            "Day one covered UI design hierarchy, including the principles of arranging visual elements for a clearer, more structured interface.",
-            "Day two covered UX through the Design Thinking approach, from understanding user problems to designing solutions centered on their needs.",
+            "Completed the Flexible Kickstart UI UX Design Journey program to learn the fundamentals of the UI/UX design process and workflow in a structured way.",
+            "Finished the program with an Excellent Grade.",
           ],
           certificates: [
             {
               label: "Participation Certificate",
-              image: "/certificates/dibimbing.pdf",
+              image: "/certificates/rakamin-uiux-participation.jpg",
+            },
+            {
+              label: "Achievement Certificate",
+              image: "/certificates/rakamin-uiux-achievement.jpg",
             },
           ],
         },
       ],
       organizations: [
-        {
-          id: "org-himatika",
-          role: "External Relations Member",
-          org: "Mathematics Student Association (HIMATIKA), FMIPA Unhas",
-          period: "September 2024 — July 2025",
-          points: [
-            "Built relationships and partnerships with external parties on behalf of the association.",
-            "Contributed to work programs in the external relations division.",
-          ],
-        },
-        {
-          id: "org-hmi-mipa",
-          role: "Secretary of the PTKP Division",
-          org: "Muslim Student Association (HMI), MIPA Unhas Chapter",
-          period: "September 2024 — December 2025",
-          points: [
-            "Managed the administration and documentation of the PTKP Division's activities on a regular basis.",
-            "Supported the coordination and execution of the PTKP Division's work programs together with fellow board members.",
-          ],
-        },
         {
           id: "org-ltmi",
           role: "Deputy of Educational Technology and Human Resource Development",
@@ -636,12 +683,35 @@ export const content = {
         },
         {
           id: "org-hmi",
-          role: "Secretary General",
           org: "Muslim Student Association (HMI)",
-          period: "January 2026",
+          periods: [
+            {
+              role: "Secretary General",
+              period: "January 2026",
+              points: [
+                "Managed the organization's overall administration and secretariat functions.",
+                "Supported cross-divisional coordination of work programs within the board.",
+              ],
+            },
+            {
+              role: "Secretary of the PTKP Division",
+              org: "MIPA Unhas Chapter",
+              period: "September 2024 — December 2025",
+              points: [
+                "Managed the administration and documentation of the PTKP Division's activities on a regular basis.",
+                "Supported the coordination and execution of the PTKP Division's work programs together with fellow board members.",
+              ],
+            },
+          ],
+        },
+        {
+          id: "org-himatika",
+          role: "External Relations Member",
+          org: "Mathematics Student Association (HIMATIKA), FMIPA Unhas",
+          period: "September 2024 — July 2025",
           points: [
-            "Managed the organization's overall administration and secretariat functions.",
-            "Supported cross-divisional coordination of work programs within the board.",
+            "Built relationships and partnerships with external parties on behalf of the association.",
+            "Contributed to work programs in the external relations division.",
           ],
         },
       ],
