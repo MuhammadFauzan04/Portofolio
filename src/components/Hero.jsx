@@ -3,7 +3,7 @@ import { useContent } from "../context/LanguageContext";
 import ProjectCover from "./ProjectCover";
 import ProjectModal from "./ProjectModal";
 import AnimateOnScroll from "./AnimateOnScroll";
-import { ArrowUpRight, CornerDownLeft } from "./Icons";
+import { ArrowUpRight, CornerDownLeft, Download } from "./Icons";
 
 // Which projects are pinned as the two big cards in the hero.
 const HERO_PROJECT_IDS = ["medilink", "belibis"];
@@ -34,10 +34,20 @@ export default function Hero() {
       <div className="hero__top">
         <div className="hero__intro">
           <p className="hero__lead">{hero.subtitle}</p>
-          <a href={hero.ctaPrimary.href} className="btn">
-            {ctaLabel}
-            <ArrowUpRight size={13} />
-          </a>
+          <div className="hero__cta-row">
+            <a href={hero.ctaPrimary.href} className="btn">
+              {ctaLabel}
+              <ArrowUpRight size={13} />
+            </a>
+            <a
+              href={hero.ctaCv.href}
+              className="btn btn--ghost"
+              download
+            >
+              {hero.ctaCv.label}
+              <Download size={13} />
+            </a>
+          </div>
         </div>
 
         <div className="hero__headline">

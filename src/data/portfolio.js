@@ -27,6 +27,7 @@ export const content = {
         "Saya Fauzan — mahasiswa Sistem Informasi yang fokus pada UI/UX design dengan pendekatan User-Centered Design.",
       ctaPrimary: { label: "Lihat Karya Saya →", href: "#projects" },
       ctaGhost: { label: "Diskusi Project", href: "#contact" },
+      ctaCv: { label: "Unduh CV", href: "/cv-fauzan.pdf" },
       roles: [
         "UI/UX Designer",
         "Sistem Informasi",
@@ -474,6 +475,7 @@ export const content = {
       subtitle:
         "I'm Fauzan — an Information Systems student focused on UI/UX design with a User-Centered Design approach.",
       ctaPrimary: { label: "View My Work →", href: "#projects" },
+      ctaCv: { label: "Download CV", href: "/cv-fauzan.pdf" },
       ctaGhost: { label: "Discuss a Project", href: "#contact" },
       roles: [
         "UI/UX Designer",

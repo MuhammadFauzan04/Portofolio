@@ -228,6 +228,23 @@ ul {
   background: transparent;
   color: var(--ink);
 }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border-color: var(--line);
+}
+.btn--ghost:hover {
+  background: var(--bg-elev);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.hero__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
+}
 
 .arrow-circle {
   display: inline-flex;

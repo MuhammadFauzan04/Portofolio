@@ -39,6 +39,12 @@ export const QuoteMark = ({ size = 18, ...rest }) => (
   </svg>
 );
 
+export const Download = ({ size = 14, ...rest }) => (
+  <svg {...base} width={size} height={size} {...rest}>
+    <path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" />
+  </svg>
+);
+
 export const LogoMark = ({ size = 18, ...rest }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" aria-hidden="true" {...rest}>
     <path d="M6 20V6a2 2 0 0 1 2-2h11M6 12h9" />
