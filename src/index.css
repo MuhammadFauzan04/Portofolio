@@ -1716,6 +1716,83 @@ button:hover .arrow-circle svg,
   margin-bottom: 14px;
 }
 
+.pf-painpoints {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 26px;
+  border-top: 1px solid var(--line);
+}
+.pf-painpoint {
+  border-bottom: 1px solid var(--line);
+}
+.pf-painpoint__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+.pf-painpoint__head:hover .pf-painpoint__problem {
+  color: var(--ink);
+}
+.pf-painpoint__index {
+  flex: none;
+  padding-top: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.pf-painpoint__problem {
+  flex: 1;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+.pf-painpoint__problem .label {
+  display: block;
+  margin-bottom: 4px;
+}
+.pf-painpoint__chevron {
+  flex: none;
+  margin-top: 3px;
+  color: var(--ink-mute);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pf-painpoint.is-open .pf-painpoint__chevron {
+  transform: rotate(180deg);
+}
+.pf-painpoint__wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pf-painpoint.is-open .pf-painpoint__wrap {
+  grid-template-rows: 1fr;
+}
+.pf-painpoint__inner {
+  overflow: hidden;
+}
+.pf-painpoint__inner .pf-painpoint__solution {
+  margin: 0 0 18px calc(11px + 14px);
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.pf-painpoint__solution .label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
 @media (max-width: 560px) {
   .modal-banner {
     aspect-ratio: 16 / 10;

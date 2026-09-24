@@ -289,6 +289,20 @@ export const content = {
           description:
             "Perancangan prototipe UI/UX untuk sistem manajemen rumah sakit, studi kasus RSUD Wakatobi. Dirancang menggunakan pendekatan User-Centered Design, divalidasi melalui Maze usability testing, System Usability Scale, dan User Acceptance Test. Project ini mencakup riset kebutuhan pengguna, penyusunan wireframe, desain antarmuka, hingga pengujian usability untuk memastikan sistem mudah digunakan oleh staf rumah sakit.",
           meta: ["UCD", "Figma", "Usability Testing", "Skripsi", "CV. Choice Indonesia", "Project Magang"],
+          painPoints: [
+            {
+              problem:
+                "Proses manajemen rumah sakit di RSUD Wakatobi sebelumnya masih berjalan manual, mulai dari pencatatan data pasien hingga koordinasi antar staf, sehingga rawan human error dan memperlambat pelayanan.",
+              solution:
+                "Merancang alur kerja digital yang tersentralisasi dengan pendekatan User-Centered Design, sehingga staf punya satu sistem yang jelas untuk mencatat dan mengakses data tanpa proses manual berulang.",
+            },
+            {
+              problem:
+                "Sistem informasi yang tersedia sebelumnya memiliki tampilan antarmuka yang kompleks dan kurang menarik, membuat staf rumah sakit kesulitan dan enggan beradaptasi saat menggunakannya.",
+              solution:
+                "Menyederhanakan hierarki visual dan alur navigasi lewat wireframe hingga high-fidelity design, lalu memvalidasinya melalui Maze usability testing, System Usability Scale, dan User Acceptance Test agar terbukti lebih mudah dipakai.",
+            },
+          ],
           accent: "blue",
           images: ["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"],
           logo: "/medilink-logo.png",
@@ -305,6 +319,20 @@ export const content = {
           description:
             "CBR-Dent adalah sistem manajemen klinik gigi yang membantu dokter mengelola data pasien, riwayat konsultasi, dan administrasi klinik dalam satu platform. Fitur utamanya adalah modul analisis CBR (Case-Based Reasoning) yang menganalisis parameter klinis pasien untuk merekomendasikan desain obturator yang paling sesuai, lengkap dengan skor akurasi dan riwayat kasus serupa sebagai referensi.",
           meta: ["UI/UX", "Figma", "Website", "Case-Based Reasoning", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Data pasien, riwayat konsultasi, dan administrasi klinik gigi sebelumnya dikelola manual dan terpisah-pisah, membuat pencarian riwayat kasus lama memakan waktu.",
+              solution:
+                "Menyatukan seluruh data pasien dan administrasi klinik dalam satu platform, sehingga dokter bisa mengakses riwayat kasus tanpa berpindah-pindah catatan.",
+            },
+            {
+              problem:
+                "Penentuan desain obturator sebelumnya mengandalkan pertimbangan manual dokter berdasarkan pengalaman pribadi, tanpa referensi kasus serupa yang terstruktur.",
+              solution:
+                "Membangun modul Case-Based Reasoning yang menganalisis parameter klinis pasien dan merekomendasikan desain obturator secara otomatis, lengkap dengan skor akurasi dan riwayat kasus serupa sebagai pembanding.",
+            },
+          ],
           accent: "teal",
           images: ["/cbr-dent-1.png", "/cbr-dent-2.png", "/cbr-dent-3.png"],
           logo: "/cbr-dent-logo.png",
@@ -321,6 +349,14 @@ export const content = {
           description:
             "Yalla App merupakan aplikasi travel penerbangan umrah yang menghubungkan berbagai penyelenggara travel dalam satu platform. Aplikasi ini memudahkan pengelolaan jadwal penerbangan, data jamaah, reservasi, pembayaran, serta pemantauan proses keberangkatan secara terintegrasi sehingga operasional travel menjadi lebih efisien.",
           meta: ["UI/UX", "Figma", "Mobile App", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Setiap penyelenggara travel umrah sebelumnya mengelola jadwal penerbangan, data jamaah, dan reservasi secara manual dan terpisah, sehingga sulit dipantau secara terpusat.",
+              solution:
+                "Merancang satu platform yang menghubungkan berbagai penyelenggara travel, mencakup jadwal penerbangan, data jamaah, reservasi, pembayaran, hingga pemantauan keberangkatan secara terintegrasi.",
+            },
+          ],
           accent: "cyan",
           images: ["/yalla_slide1.png", "/yalla_slide2.png", "/yalla_slide3.png"],
           logo: "/yalla-logo.jpg",
@@ -337,6 +373,14 @@ export const content = {
           description:
             "Belibis App adalah aplikasi pemesanan tiket kapal online yang dirancang untuk memudahkan perjalanan antar pulau di wilayah Sorong. Aplikasi ini memungkinkan pengguna mencari jadwal kapal, memilih kursi, melakukan pemesanan dan pembayaran, serta mengakses informasi perjalanan secara praktis melalui satu platform yang terintegrasi.",
           meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Pemesanan tiket kapal antar pulau di wilayah Sorong sebelumnya harus dilakukan manual langsung ke loket, tanpa bisa mengecek jadwal atau ketersediaan kursi dari jarak jauh.",
+              solution:
+                "Merancang aplikasi mobile yang memungkinkan pengguna mencari jadwal, memilih kursi, memesan, membayar, dan mengakses info perjalanan langsung dari ponsel.",
+            },
+          ],
           accent: "indigo",
           logo: "/belibis-logo.png",
           images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
@@ -353,6 +397,14 @@ export const content = {
           description:
             "Belibis Web dirancang khusus untuk role petugas loket, digunakan untuk mencatat dan memproses pembelian tiket kapal yang dilakukan secara offline oleh penumpang. Proses check-in juga diharuskan dilakukan langsung di loket, sehingga website ini membantu petugas mengelola transaksi dan verifikasi kehadiran penumpang secara terpusat di satu platform.",
           meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Transaksi tiket offline dan verifikasi kehadiran penumpang di loket sebelumnya dicatat manual, rawan selisih pencatatan atau kehilangan data saat kondisi ramai.",
+              solution:
+                "Membuat website khusus loket untuk mencatat transaksi dan memproses check-in penumpang secara terpusat dalam satu platform, menggantikan pencatatan manual.",
+            },
+          ],
           accent: "indigo",
           logo: "/belibis-logo.png",
           images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
@@ -368,6 +420,14 @@ export const content = {
             "SINERGI-JI Aplikasi pelaporan dan pemantauan gangguan jaringan internet untuk instansi pemerintah di Kota Makassar.",
           description:
             "SINERGI-JI (Sinergi Jaringan Intra Pemerintah) memudahkan setiap kantor kedinasan di Kota Makassar melaporkan gangguan jaringan internet secara cepat dan terstruktur, menggantikan pelaporan manual via telepon. Laporan bisa dipantau statusnya secara real-time hingga ditangani tim teknis.",
+          painPoints: [
+            {
+              problem:
+                "Pelaporan gangguan jaringan internet antar kantor kedinasan di Kota Makassar sebelumnya dilakukan manual lewat telepon, tanpa pencatatan atau status penanganan yang jelas.",
+              solution:
+                "Membangun aplikasi mobile untuk melaporkan gangguan secara terstruktur dan memantau status penanganannya secara real-time hingga selesai ditangani tim teknis.",
+            },
+          ],
           meta: [
             "UI/UX",
             "Figma",
@@ -393,6 +453,14 @@ export const content = {
           description:
             "Pusaka Bugis adalah website yang menampilkan nilai-nilai dan sejarah budaya keris khas Kabupaten Bone, memperkenalkan makna filosofis di balik setiap pusaka kepada masyarakat luas. Website ini juga dilengkapi fitur scan pamor, memungkinkan pengguna mengecek dan mengenali jenis pamor pada keris yang mereka miliki secara mudah",
           meta: ["UI/UX", "Figma", "Website", "LPDP", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Informasi sejarah dan nilai filosofis keris Bugis Bone sebelumnya tersebar dan sulit diakses masyarakat luas, sementara mengenali jenis pamor pada keris membutuhkan keahlian khusus.",
+              solution:
+                "Merancang website edukasi terpusat yang dilengkapi fitur scan pamor, sehingga siapa pun bisa mempelajari sejarah keris sekaligus mengenali jenis pamor keris mereka sendiri secara mandiri.",
+            },
+          ],
           accent: "amber",
           logo: "/pusakabugis-logo.png",
           images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
@@ -409,6 +477,14 @@ export const content = {
           description:
             "Teazzi adalah aplikasi mobile untuk pemesanan minuman teh (tea shop) yang dirancang sebagai eksplorasi UI/UX pribadi. Aplikasi ini mencakup splash screen dengan identitas brand, halaman beranda dengan promo dan kategori menu, rekomendasi produk, hingga halaman pesanan yang menampilkan status pesanan aktif secara real-time dan riwayat transaksi.",
           meta: ["UI/UX", "Figma", "Mobile App", "Project Pribadi"],
+          painPoints: [
+            {
+              problem:
+                "Pemesanan minuman kekinian di gerai fisik biasanya mengharuskan pelanggan antre langsung dan tidak bisa memantau status pesanannya sendiri.",
+              solution:
+                "Merancang aplikasi mobile dengan kategori menu, promo, rekomendasi produk, dan pelacakan status pesanan secara real-time agar pelanggan bisa pesan tanpa antre.",
+            },
+          ],
           accent: "teal",
           logo: "/teazzi-logo.png",
           images: ["/teazzi-1.png", "/teazzi-2.png", "/teazzi-3.png", "/teazzi-4.png"],
@@ -451,6 +527,8 @@ export const content = {
       languageToggleLabel: "Ganti ke Bahasa Inggris",
       previewLabel: "Pratinjau",
       slideLabel: "Slide",
+      challengeLabel: "Pain Point",
+      solutionLabel: "Solusi",
     },
   },
 
@@ -738,6 +816,20 @@ export const content = {
           description:
             "UI/UX prototype design for a hospital management system, case study of RSUD Wakatobi. Designed using a User-Centered Design approach and validated through Maze usability testing, the System Usability Scale, and User Acceptance Testing. The project covered user needs research, wireframing, and interface design through to usability testing, ensuring the system is easy for hospital staff to use.",
           meta: ["UCD", "Figma", "Usability Testing", "Thesis", "CV. Choice Indonesia", "Internship Project"],
+          painPoints: [
+            {
+              problem:
+                "Hospital management at RSUD Wakatobi previously ran on manual processes, from patient data entry to staff coordination, which was error-prone and slowed down service.",
+              solution:
+                "Designed a centralized digital workflow using a User-Centered Design approach, giving staff one clear system to record and access data instead of repeated manual steps.",
+            },
+            {
+              problem:
+                "The existing information system had a complex, unappealing interface, making it hard for hospital staff to adapt to and discouraging them from using it.",
+              solution:
+                "Simplified the visual hierarchy and navigation flow from wireframes to high-fidelity design, then validated it through Maze usability testing, the System Usability Scale, and User Acceptance Testing to prove it was easier to use.",
+            },
+          ],
           accent: "blue",
           images: ["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"],
           logo: "/medilink-logo.png",
@@ -754,6 +846,20 @@ export const content = {
           description:
             "CBR-Dent is a dental clinic management system that helps dentists manage patient data, consultation history, and clinic administration in one platform. Its core feature is a Case-Based Reasoning (CBR) analysis module that evaluates a patient's clinical parameters to recommend the most suitable obturator design, complete with an accuracy score and similar past cases for reference.",
           meta: ["UI/UX", "Figma", "Web App", "Case-Based Reasoning", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Patient data, consultation history, and clinic administration were previously handled manually and kept in separate records, making it slow to look up past cases.",
+              solution:
+                "Brought patient data and clinic administration together in one platform, so dentists can pull up case history without switching between separate records.",
+            },
+            {
+              problem:
+                "Obturator design decisions relied on each dentist's manual judgment and personal experience, with no structured reference to similar past cases.",
+              solution:
+                "Built a Case-Based Reasoning module that analyzes a patient's clinical parameters and automatically recommends an obturator design, complete with an accuracy score and similar past cases for comparison.",
+            },
+          ],
           accent: "teal",
           images: ["/cbr-dent-1.png", "/cbr-dent-2.png", "/cbr-dent-3.png"],
           logo: "/cbr-dent-logo.png",
@@ -770,6 +876,14 @@ export const content = {
           description:
             "Yalla App is an Umrah flight travel app that connects multiple travel agencies on a single platform. It simplifies flight scheduling, pilgrim data management, reservations, payments, and departure tracking in one integrated system, making travel operations more efficient.",
           meta: ["UI/UX", "Figma", "Mobile App", "Freelance Project"],
+          painPoints: [
+            {
+              problem:
+                "Each Umrah travel agency previously managed flight schedules, pilgrim data, and reservations manually and separately, making it hard to track everything in one place.",
+              solution:
+                "Designed a single platform connecting multiple travel agencies, covering flight scheduling, pilgrim data, reservations, payments, and departure tracking in one integrated system.",
+            },
+          ],
           accent: "cyan",
           images: ["/yalla_slide1.png", "/yalla_slide2.png", "/yalla_slide3.png"],
           logo: "/yalla-logo.jpg",
@@ -786,6 +900,14 @@ export const content = {
           description:
             "Belibis App is an online ferry ticket booking app designed to make inter-island travel in the Sorong region easier. It lets users search ferry schedules, pick seats, book and pay, and access trip information conveniently through one integrated platform.",
           meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Booking inter-island ferry tickets in the Sorong region previously meant going in person to a ticket counter, with no way to check schedules or seat availability remotely.",
+              solution:
+                "Designed a mobile app that lets users search schedules, pick seats, book, pay, and access trip information directly from their phone.",
+            },
+          ],
           accent: "indigo",
           logo: "/belibis-logo.png",
           images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
@@ -802,6 +924,14 @@ export const content = {
           description:
             "Belibis Web is the website version of Belibis App, designed so customers can search ferry schedules, pick seats, book, and pay without installing an app. It rounds out the Belibis ecosystem by offering the same convenient ticket-booking experience on desktop and mobile browsers alike.",
           meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Offline ticket transactions and passenger check-in at the counter were previously logged by hand, risking mismatched records or lost data during busy periods.",
+              solution:
+                "Built a dedicated counter-staff website to log transactions and process passenger check-in from one centralized platform, replacing manual record-keeping.",
+            },
+          ],
           accent: "indigo",
           logo: "/belibis-logo.png",
           images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
@@ -817,6 +947,14 @@ export const content = {
             "SINERGI-JI is an app for reporting and monitoring internet network disruptions for government agencies in Makassar City.",
           description:
             "SINERGI-JI (Government Intra-Network Synergy) makes it easy for every government office in Makassar City to report internet network disruptions quickly and in a structured way, replacing manual phone-based reporting. Reports can be tracked in real time until they're resolved by the technical team.",
+          painPoints: [
+            {
+              problem:
+                "Reporting internet network disruptions across government offices in Makassar City previously happened over the phone, with no structured record or clear status of the fix.",
+              solution:
+                "Built a mobile app for structured disruption reporting, with real-time status tracking until the technical team resolves it.",
+            },
+          ],
           meta: [
             "UI/UX",
             "Figma",
@@ -842,6 +980,14 @@ export const content = {
           description:
             "Pusaka Bugis is a website showcasing the values and history of the traditional keris culture of Bone Regency, introducing the philosophical meaning behind each heirloom to a wider audience. The site also includes a pamor-scanning feature, letting users easily check and identify the pamor pattern on their own keris.",
           meta: ["UI/UX", "Figma", "Website", "LPDP", "Project Freelance"],
+          painPoints: [
+            {
+              problem:
+                "Historical and philosophical knowledge about Bone's Bugis keris was scattered and hard for the public to access, and identifying a keris's pamor pattern required specialist expertise.",
+              solution:
+                "Designed a centralized educational website with a pamor-scanning feature, so anyone can learn keris history and identify their own keris's pamor pattern independently.",
+            },
+          ],
           accent: "amber",
           logo: "/pusakabugis-logo.png",
           images: ["/pusakabugis-1.png", "/pusakabugis-2.png", "/pusakabugis-3.png"],
@@ -858,6 +1004,14 @@ export const content = {
           description:
             "Teazzi is a mobile app for ordering tea, designed as a personal UI/UX exploration. It includes a branded splash screen, a home page with promos and menu categories, product recommendations, and an orders page showing real-time active order status alongside transaction history.",
           meta: ["UI/UX", "Figma", "Mobile App", "Personal Project"],
+          painPoints: [
+            {
+              problem:
+                "Ordering trendy drinks at a physical store usually means queuing in person, with no way for customers to track their order status.",
+              solution:
+                "Designed a mobile app with menu categories, promos, product recommendations, and real-time order tracking so customers can order without queuing.",
+            },
+          ],
           accent: "teal",
           logo: "/teazzi-logo.png",
           images: ["/teazzi-1.png", "/teazzi-2.png", "/teazzi-3.png", "/teazzi-4.png"],
@@ -900,6 +1054,8 @@ export const content = {
       languageToggleLabel: "Switch to Indonesian",
       previewLabel: "Preview",
       slideLabel: "Slide",
+      challengeLabel: "Pain Point",
+      solutionLabel: "Solution",
     },
   },
 };

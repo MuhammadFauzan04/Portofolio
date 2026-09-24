@@ -1,11 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useContent } from "../context/LanguageContext";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectCover from "./ProjectCover";
 import { thumb } from "../lib/thumb";
+import { Chevron } from "./Icons";
 
 export default function ProjectModal({ project, onClose }) {
   const { ui } = useContent();
+  const [openIndex, setOpenIndex] = useState(0);
+
+  useEffect(() => {
+    // Reset to the first pain point whenever a different project is opened.
+    setOpenIndex(0);
+  }, [project?.id]);
 
   useEffect(() => {
     if (!project) return;
@@ -68,6 +75,51 @@ export default function ProjectModal({ project, onClose }) {
               {project.meta.map((m) => (
                 <span key={m}>{m}</span>
               ))}
+            </div>
+          )}
+
+          {project.painPoints?.length > 0 && (
+            <div className="pf-painpoints">
+              {project.painPoints.map((p, i) => {
+                const isOpen = openIndex === i;
+                const panelId = `painpoint-panel-${project.id}-${i}`;
+                return (
+                  <div
+                    className={`pf-painpoint${isOpen ? " is-open" : ""}`}
+                    key={i}
+                  >
+                    <button
+                      type="button"
+                      className="pf-painpoint__head"
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                    >
+                      <span className="pf-painpoint__index">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="pf-painpoint__problem">
+                        <span className="label">
+                          [ {ui.challengeLabel} ]
+                        </span>
+                        {p.problem}
+                      </span>
+                      <Chevron size={14} className="pf-painpoint__chevron" />
+                    </button>
+
+                    <div className="pf-painpoint__wrap" id={panelId}>
+                      <div className="pf-painpoint__inner">
+                        <p className="pf-painpoint__solution">
+                          <span className="label">
+                            [ {ui.solutionLabel} ]
+                          </span>
+                          {p.solution}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
 
