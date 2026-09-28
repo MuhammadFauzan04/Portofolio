@@ -11,8 +11,7 @@ export const prototypeLinks = {
   "medilink": "",
   "cbr-dent": "",
   "yalla": "",
-  "belibis": "",
-  "web-belibis": "",
+  "belibis": "", // Belibis App + Website
   "project-placeholder-1": "", // Sinergi-Ji App
   "project-placeholder-2": "", // Pusaka Bugis Web
   "teazzi": "",
@@ -379,49 +378,34 @@ export const content = {
           id: "belibis",
           featured: false,
           tag: "PROJECT",
-          category: "Aplikasi Mobile",
+          category: "Aplikasi Mobile & Website",
+          categories: ["Aplikasi Mobile", "Website"],
           kind: "mobile",
-          title: "Belibis App",
+          title: "Belibis — Aplikasi & Website Tiket Kapal",
           summary:
-            "Aplikasi pemesanan tiket kapal online untuk memudahkan perjalanan antar pulau di wilayah Sorong.",
+            "Ekosistem pemesanan tiket kapal antar pulau di wilayah Sorong: aplikasi mobile untuk penumpang dan website khusus untuk petugas loket.",
           description:
-            "Belibis App adalah aplikasi pemesanan tiket kapal online yang dirancang untuk memudahkan perjalanan antar pulau di wilayah Sorong. Aplikasi ini memungkinkan pengguna mencari jadwal kapal, memilih kursi, melakukan pemesanan dan pembayaran, serta mengakses informasi perjalanan secara praktis melalui satu platform yang terintegrasi.",
-          meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group", "Project Freelance"],
+            "Belibis adalah ekosistem pemesanan tiket kapal online untuk memudahkan perjalanan antar pulau di wilayah Sorong. Aplikasi mobile memungkinkan penumpang mencari jadwal kapal, memilih kursi, memesan dan membayar, serta mengakses informasi perjalanan. Sementara itu, website khusus petugas loket digunakan untuk mencatat pembelian tiket secara offline dan memproses check-in penumpang langsung di lokasi, sehingga seluruh transaksi terpusat di satu sistem.",
+          meta: ["UI/UX", "Figma", "Mobile App", "Website", "Belbis Group", "Project Freelance"],
           painPoints: [
             {
               problem:
-                "Pemesanan tiket kapal antar pulau di wilayah Sorong sebelumnya harus dilakukan manual langsung ke loket, tanpa bisa mengecek jadwal atau ketersediaan kursi dari jarak jauh.",
+                "Aplikasi — Pemesanan tiket kapal antar pulau di wilayah Sorong sebelumnya harus dilakukan manual langsung ke loket, tanpa bisa mengecek jadwal atau ketersediaan kursi dari jarak jauh.",
               solution:
                 "Merancang aplikasi mobile yang memungkinkan pengguna mencari jadwal, memilih kursi, memesan, membayar, dan mengakses info perjalanan langsung dari ponsel.",
             },
-          ],
-          accent: "indigo",
-          logo: "/belibis-logo.png",
-          images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
-        },
-        {
-          id: "web-belibis",
-          featured: false,
-          tag: "PROJECT",
-          category: "Website",
-          kind: "web",
-          title: "Belibis Web — Website Loket Penjualan Tiket Kapal",
-          summary:
-            "Website khusus untuk petugas loket, digunakan untuk memproses pembelian tiket kapal secara offline dan check-in penumpang langsung di lokasi.",
-          description:
-            "Belibis Web dirancang khusus untuk role petugas loket, digunakan untuk mencatat dan memproses pembelian tiket kapal yang dilakukan secara offline oleh penumpang. Proses check-in juga diharuskan dilakukan langsung di loket, sehingga website ini membantu petugas mengelola transaksi dan verifikasi kehadiran penumpang secara terpusat di satu platform.",
-          meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
-          painPoints: [
             {
               problem:
-                "Transaksi tiket offline dan verifikasi kehadiran penumpang di loket sebelumnya dicatat manual, rawan selisih pencatatan atau kehilangan data saat kondisi ramai.",
+                "Website Loket — Transaksi tiket offline dan verifikasi kehadiran penumpang di loket sebelumnya dicatat manual, rawan selisih pencatatan atau kehilangan data saat kondisi ramai.",
               solution:
                 "Membuat website khusus loket untuk mencatat transaksi dan memproses check-in penumpang secara terpusat dalam satu platform, menggantikan pencatatan manual.",
             },
           ],
           accent: "indigo",
           logo: "/belibis-logo.png",
-          images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
+          // Cover: 1 laptop + 1 handphone (galeri di popup tetap memakai semua images)
+          cover: { laptop: "/web-belibis-1.png", phone: "/belibis_slide1.png" },
+          images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png", "/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
         },
         {
           id: "project-placeholder-1",
@@ -908,49 +892,34 @@ export const content = {
           id: "belibis",
           featured: false,
           tag: "PROJECT",
-          category: "Mobile App",
+          category: "Mobile App & Website",
+          categories: ["Mobile App", "Website"],
           kind: "mobile",
-          title: "Belibis App",
+          title: "Belibis — Ferry Ticketing App & Website",
           summary:
-            "An online ferry ticket booking app that makes inter-island travel in the Sorong region easier.",
+            "An inter-island ferry ticketing ecosystem for the Sorong region: a mobile app for passengers and a dedicated website for counter staff.",
           description:
-            "Belibis App is an online ferry ticket booking app designed to make inter-island travel in the Sorong region easier. It lets users search ferry schedules, pick seats, book and pay, and access trip information conveniently through one integrated platform.",
-          meta: ["UI/UX", "Figma", "Mobile App", "Belbis Group", "Project Freelance"],
+            "Belibis is an online ferry ticketing ecosystem that makes inter-island travel in the Sorong region easier. The mobile app lets passengers search ferry schedules, pick seats, book and pay, and access trip information. A dedicated website for counter staff records offline ticket purchases and processes passenger check-in on site, keeping every transaction in one centralized system.",
+          meta: ["UI/UX", "Figma", "Mobile App", "Website", "Belbis Group", "Project Freelance"],
           painPoints: [
             {
               problem:
-                "Booking inter-island ferry tickets in the Sorong region previously meant going in person to a ticket counter, with no way to check schedules or seat availability remotely.",
+                "App — Booking inter-island ferry tickets in the Sorong region previously meant going in person to a ticket counter, with no way to check schedules or seat availability remotely.",
               solution:
                 "Designed a mobile app that lets users search schedules, pick seats, book, pay, and access trip information directly from their phone.",
             },
-          ],
-          accent: "indigo",
-          logo: "/belibis-logo.png",
-          images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png"],
-        },
-        {
-          id: "web-belibis",
-          featured: false,
-          tag: "PROJECT",
-          category: "Website",
-          kind: "web",
-          title: "Belibis Web — Ferry Ticket Booking Website",
-          summary:
-            "The website version of Belibis App, letting customers book inter-island ferry tickets in the Sorong region straight from a browser.",
-          description:
-            "Belibis Web is the website version of Belibis App, designed so customers can search ferry schedules, pick seats, book, and pay without installing an app. It rounds out the Belibis ecosystem by offering the same convenient ticket-booking experience on desktop and mobile browsers alike.",
-          meta: ["UI/UX", "Figma", "Website", "Belbis Group", "Project Freelance"],
-          painPoints: [
             {
               problem:
-                "Offline ticket transactions and passenger check-in at the counter were previously logged by hand, risking mismatched records or lost data during busy periods.",
+                "Counter Website — Offline ticket transactions and passenger check-in at the counter were previously logged by hand, risking mismatched records or lost data during busy periods.",
               solution:
                 "Built a dedicated counter-staff website to log transactions and process passenger check-in from one centralized platform, replacing manual record-keeping.",
             },
           ],
           accent: "indigo",
           logo: "/belibis-logo.png",
-          images: ["/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
+          // Cover: 1 laptop + 1 handphone (galeri di popup tetap memakai semua images)
+          cover: { laptop: "/web-belibis-1.png", phone: "/belibis_slide1.png" },
+          images: ["/belibis_slide1.png", "/belibis_slide2.png", "/belibis_slide3.png", "/web-belibis-1.png", "/web-belibis-2.png", "/web-belibis-3.png", "/web-belibis-4.png"],
         },
         {
           id: "project-placeholder-1",

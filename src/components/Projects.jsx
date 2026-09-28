@@ -38,14 +38,16 @@ export default function Projects() {
   const categories = useMemo(() => {
     const seen = new Map();
     projects.list.forEach((p) => {
-      if (p.category && !seen.has(p.category)) seen.set(p.category, p.category);
+      (p.categories || [p.category]).forEach((c) => {
+        if (c && !seen.has(c)) seen.set(c, c);
+      });
     });
     return Array.from(seen.values());
   }, [projects.list]);
 
   const filtered = useMemo(() => {
     if (filter === "all") return projects.list;
-    return projects.list.filter((p) => p.category === filter);
+    return projects.list.filter((p) => (p.categories || [p.category]).includes(filter));
   }, [projects.list, filter]);
 
   return (

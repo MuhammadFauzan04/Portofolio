@@ -412,6 +412,33 @@ button:hover .arrow-circle svg,
   top: 24%;
 }
 
+/* both = one laptop + one phone (phone overlaps and bleeds off the bottom) */
+.cover.cover--both .cover__laptop {
+  left: 6%;
+  top: 16%;
+  width: 72%;
+  transform: none;
+}
+.cover.cover--both .cover__phone--a {
+  left: 68%;
+  top: 34%;
+  width: 25%;
+}
+.cover.cover--both.cover--modal .cover__laptop {
+  left: 20%;
+  top: 18%;
+  width: 50%;
+}
+.cover.cover--both.cover--modal .cover__phone--a {
+  left: 65%;
+  top: 34%;
+  width: 17%;
+}
+.hero-card:hover .cover--both .cover__laptop,
+.project-card:hover .cover--both .cover__laptop {
+  transform: scale(1.03);
+}
+
 .hero-card:hover .cover img,
 .project-card:hover .cover img {
   transform: translate(-50%, -50%) scale(1.04);
