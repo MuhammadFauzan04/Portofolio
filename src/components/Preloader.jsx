@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useContent } from "../context/LanguageContext";
+import Logo3DF from "./Logo3DF";
 
-const DURATION = 1700; // ms, simulated loading progress
+const MIN_SHOW = 3000; // ms, so the throw-in + a few turns are always seen
+const MAX_WAIT = 10000; // ms, fail-safe: never keep the splash forever
 const EXIT_DURATION = 650; // ms, must match the CSS exit transition below
-const RING_RADIUS = 28;
-const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 export default function Preloader({ onFinish }) {
   const { ui } = useContent();
@@ -12,18 +12,23 @@ export default function Preloader({ onFinish }) {
   const [exiting, setExiting] = useState(false);
   const [done, setDone] = useState(false);
   const finishedRef = useRef(false);
+  const logoRef = useRef(null);
 
   useEffect(() => {
     document.body.classList.add("is-loading");
+    let cancelled = false;
+    let raf;
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const finish = () => {
+    const finish = async () => {
       if (finishedRef.current) return;
       finishedRef.current = true;
       setProgress(100);
+      // let the 3D logo stop facing front before the overlay fades out
+      if (!prefersReduced) await logoRef.current?.finish();
       setExiting(true);
       setTimeout(() => {
         setDone(true);
@@ -37,22 +42,34 @@ export default function Preloader({ onFinish }) {
       return () => document.body.classList.remove("is-loading");
     }
 
-    let raf;
-    const start = performance.now();
+    // The logo keeps spinning until the site is really ready: window "load"
+    // (all images/styles) + web fonts, with a minimum on-screen time.
+    const pageLoaded = new Promise((res) => {
+      if (document.readyState === "complete") res();
+      else window.addEventListener("load", res, { once: true });
+    });
+    const fontsReady = document.fonts?.ready ?? Promise.resolve();
+    const minTime = new Promise((res) => setTimeout(res, MIN_SHOW));
+    const maxTime = new Promise((res) => setTimeout(res, MAX_WAIT));
 
-    const tick = (now) => {
-      const t = Math.min((now - start) / DURATION, 1);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-      setProgress(Math.round(eased * 100));
-      if (t < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        finish();
+    Promise.race([Promise.all([pageLoaded, fontsReady, minTime]), maxTime]).then(
+      () => {
+        if (!cancelled) finish();
       }
+    );
+
+    // Progress creeps toward 92% while waiting; 100% is set on finish().
+    const start = performance.now();
+    const tick = (now) => {
+      if (finishedRef.current) return;
+      const t = Math.min((now - start) / (MIN_SHOW * 1.2), 1);
+      setProgress(Math.round((1 - Math.pow(1 - t, 3)) * 92));
+      raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
 
     return () => {
+      cancelled = true;
       cancelAnimationFrame(raf);
       document.body.classList.remove("is-loading");
     };
@@ -61,9 +78,6 @@ export default function Preloader({ onFinish }) {
 
   if (done) return null;
 
-  const dashOffset =
-    RING_CIRCUMFERENCE - (RING_CIRCUMFERENCE * progress) / 100;
-
   return (
     <div
       className={`preloader ${exiting ? "preloader--exit" : ""}`}
@@ -71,28 +85,7 @@ export default function Preloader({ onFinish }) {
       aria-live="polite"
       aria-label={ui.loadingPage(progress)}
     >
-      <div className="preloader__mark">
-        <span className="preloader__letter">F</span>
-        <svg className="preloader__ring" viewBox="0 0 64 64">
-          <defs>
-            <linearGradient id="preloaderRingGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="var(--ink)" />
-              <stop offset="100%" stopColor="var(--ink-soft)" />
-            </linearGradient>
-          </defs>
-          <circle className="preloader__ring-track" cx="32" cy="32" r={RING_RADIUS} />
-          <circle
-            className="preloader__ring-fill"
-            cx="32"
-            cy="32"
-            r={RING_RADIUS}
-            style={{
-              strokeDasharray: RING_CIRCUMFERENCE,
-              strokeDashoffset: dashOffset,
-            }}
-          />
-        </svg>
-      </div>
+      <Logo3DF ref={logoRef} />
       <div className="preloader__bar">
         <div className="preloader__bar-fill" style={{ width: `${progress}%` }} />
       </div>
