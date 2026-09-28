@@ -6,6 +6,30 @@ import ProjectCover from "./ProjectCover";
 import SplitReveal from "./SplitReveal";
 import { ArrowUpRight } from "./Icons";
 
+// 3D tilt that follows the pointer. Writes CSS vars on the media box (not the
+// card itself, whose transform is owned by the card-in animation).
+const canTilt = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function tiltMove(e) {
+  if (!canTilt()) return;
+  const media = e.currentTarget.querySelector(".project-card__media");
+  if (!media) return;
+  const r = media.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width - 0.5;
+  const py = (e.clientY - r.top) / r.height - 0.5;
+  media.style.setProperty("--ry", `${(px * 8).toFixed(2)}deg`);
+  media.style.setProperty("--rx", `${(-py * 8).toFixed(2)}deg`);
+}
+function tiltReset(e) {
+  const media = e.currentTarget.querySelector(".project-card__media");
+  if (!media) return;
+  media.style.setProperty("--ry", "0deg");
+  media.style.setProperty("--rx", "0deg");
+}
+
 export default function Projects() {
   const { projects } = useContent();
   const [active, setActive] = useState(null);
@@ -67,6 +91,8 @@ export default function Projects() {
             className="project-card"
             style={{ "--stagger": `${(i % 2) * 90}ms` }}
             onClick={() => setActive(p)}
+            onMouseMove={tiltMove}
+            onMouseLeave={tiltReset}
           >
             <span className="project-card__media">
               <ProjectCover project={p} variant="card" />

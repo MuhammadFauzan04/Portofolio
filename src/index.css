@@ -1707,6 +1707,15 @@ button:hover .arrow-circle svg,
   color: var(--ink-soft);
 }
 
+.modal-prototype {
+  margin-bottom: 26px;
+}
+.modal-prototype.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .modal-gallery {
   padding-top: 22px;
   border-top: 1px solid var(--line);
@@ -2305,5 +2314,99 @@ button:hover .arrow-circle svg,
   .theme-toggle,
   .lang-toggle {
     transition: none;
+  }
+}
+
+/* ───────── Motion: marquee, floating hero cards, pill arrow, card tilt ───────── */
+
+/* Skill ticker */
+.marquee {
+  overflow: hidden;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 38s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+.marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  font-size: clamp(22px, 3.2vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
+}
+.marquee__item:hover {
+  color: var(--ink);
+}
+.marquee__star {
+  font-style: normal;
+  font-size: 0.55em;
+  color: var(--ink-mute);
+  animation: marquee-spin 6s linear infinite;
+}
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Hero cards: gentle idle float (on the button, GSAP owns the wrapper) */
+.hero-card--float-0 { animation: float-y 7s ease-in-out infinite; }
+.hero-card--float-1 { animation: float-y 7s ease-in-out -3.5s infinite; }
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Pill arrow slides back and forth */
+.hero__pill-dot {
+  animation: pill-slide 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes pill-slide {
+  0%, 15%   { transform: translateX(0); }
+  50%, 65%  { transform: translateX(-0.72em); }
+  100%      { transform: translateX(0); }
+}
+
+/* Project card tilt (vars set from Projects.jsx) */
+.project-card__media {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track,
+  .marquee__star,
+  .hero-card--float-0,
+  .hero-card--float-1,
+  .hero__pill-dot {
+    animation: none;
+  }
+  .project-card__media {
+    transform: none;
   }
 }

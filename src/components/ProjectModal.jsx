@@ -3,7 +3,7 @@ import { useContent } from "../context/LanguageContext";
 import ProjectCarousel from "./ProjectCarousel";
 import ProjectCover from "./ProjectCover";
 import { thumb } from "../lib/thumb";
-import { Chevron } from "./Icons";
+import { Chevron, ArrowUpRight } from "./Icons";
 
 export default function ProjectModal({ project, onClose }) {
   const { ui } = useContent();
@@ -76,6 +76,25 @@ export default function ProjectModal({ project, onClose }) {
                 <span key={m}>{m}</span>
               ))}
             </div>
+          )}
+
+          {project.prototypeUrl ? (
+            <a
+              className="btn btn--primary modal-prototype"
+              href={project.prototypeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {ui.prototypeLabel}
+              <ArrowUpRight size={14} />
+            </a>
+          ) : (
+            <span
+              className="btn btn--ghost modal-prototype is-disabled"
+              aria-disabled="true"
+            >
+              {ui.prototypeSoonLabel}
+            </span>
           )}
 
           {project.painPoints?.length > 0 && (

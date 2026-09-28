@@ -89,7 +89,7 @@ export default function Hero() {
           <AnimateOnScroll key={p.id} delay={i * 90} variant="scale" duration={1}>
             <button
               type="button"
-              className="hero-card"
+              className={`hero-card hero-card--float-${i % 2}`}
               onClick={() => setActive(p)}
               aria-label={`${hero.cardLabel}: ${p.title}`}
             >

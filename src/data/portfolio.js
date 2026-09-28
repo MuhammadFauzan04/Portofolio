@@ -4,6 +4,20 @@
 // language is currently active — no scattered `field.id` / `field.en`
 // lookups sprinkled through the JSX.
 
+// Link prototype tiap project (Figma / Maze / dll). Isi URL di sini —
+// otomatis dipakai di versi Indonesia & Inggris. Kosongkan ("") kalau belum
+// ada; jika kosong, tombol di popup tampil nonaktif ("segera hadir").
+export const prototypeLinks = {
+  "medilink": "",
+  "cbr-dent": "",
+  "yalla": "",
+  "belibis": "",
+  "web-belibis": "",
+  "project-placeholder-1": "", // Sinergi-Ji App
+  "project-placeholder-2": "", // Pusaka Bugis Web
+  "teazzi": "",
+};
+
 export const content = {
   id: {
     nav: {
@@ -526,6 +540,8 @@ export const content = {
       loadingPage: (progress) => `Memuat halaman, ${progress}%`,
       languageToggleLabel: "Ganti ke Bahasa Inggris",
       previewLabel: "Pratinjau",
+      prototypeLabel: "Lihat Prototype",
+      prototypeSoonLabel: "Prototype segera hadir",
       slideLabel: "Slide",
       challengeLabel: "Pain Point",
       solutionLabel: "Solusi",
@@ -1053,9 +1069,18 @@ export const content = {
       loadingPage: (progress) => `Loading page, ${progress}%`,
       languageToggleLabel: "Switch to Indonesian",
       previewLabel: "Preview",
+      prototypeLabel: "View Prototype",
+      prototypeSoonLabel: "Prototype coming soon",
       slideLabel: "Slide",
       challengeLabel: "Pain Point",
       solutionLabel: "Solution",
     },
   },
 };
+
+// Gabungkan prototypeLinks ke tiap project (id & en).
+Object.values(content).forEach((lang) => {
+  lang.projects.list.forEach((proj) => {
+    proj.prototypeUrl = prototypeLinks[proj.id] || "";
+  });
+});
