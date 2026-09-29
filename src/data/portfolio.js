@@ -8,13 +8,13 @@
 // otomatis dipakai di versi Indonesia & Inggris. Kosongkan ("") kalau belum
 // ada; jika kosong, tombol di popup tampil nonaktif ("segera hadir").
 export const prototypeLinks = {
-  "medilink": "",
+  "medilink": "https://www.figma.com/proto/FG25dcDQPYeJ4O2cbqkgtX/Medilink?node-id=1731-31727&p=f&t=bm541nbcNa2zTRHX-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1731%3A31727",
   "cbr-dent": "",
-  "yalla": "",
-  "belibis": "", // Belibis App + Website
+  "yalla": "https://www.figma.com/proto/vCZ4gUocADM4CAP1BPDPnJ/Yalla-App?node-id=317-1115&p=f&t=BOLRqJxjhvkPnmxK-1&scaling=scale-down&content-scaling=fixed&page-id=11%3A34&starting-point-node-id=313%3A1102",
+  "belibis": "https://www.figma.com/proto/86y4bJPFQJ6XPK6br7nIFR/Aplikasi-Belibis?node-id=231-830&p=f&t=lGcJSATYIY2ov6sq-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=231%3A824&show-proto-sidebar=1", // Belibis App + Website
   "project-placeholder-1": "", // Sinergi-Ji App
-  "project-placeholder-2": "", // Pusaka Bugis Web
-  "teazzi": "",
+  "project-placeholder-2": "https://www.figma.com/proto/sIeiXUPLUnVYm0ZoMfkY4C/pusakabugis.id?node-id=1-10&p=f&t=tn2SzLCwZ3rJsbeW-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A9&starting-point-node-id=1%3A10", // Pusaka Bugis Web
+  "teazzi": "https://www.figma.com/proto/X5xAo7oYJtcPq9ATdehgEk/Teazzi?node-id=1-164&p=f&t=SHUYPs1DA03OT7ro-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A19",
 };
 
 export const content = {
