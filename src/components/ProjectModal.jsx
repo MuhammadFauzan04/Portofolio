@@ -78,6 +78,18 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           )}
 
+          {project.caseStudyUrl && (
+            <a
+              className="btn btn--primary modal-prototype"
+              href={project.caseStudyUrl}
+              onClick={onClose}
+              style={{ marginRight: 12 }}
+            >
+              {ui.caseStudyLabel}
+              <ArrowUpRight size={14} />
+            </a>
+          )}
+
           {project.prototypeUrl ? (
             <a
               className="btn btn--primary modal-prototype"

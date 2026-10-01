@@ -8,13 +8,13 @@
 // otomatis dipakai di versi Indonesia & Inggris. Kosongkan ("") kalau belum
 // ada; jika kosong, tombol di popup tampil nonaktif ("segera hadir").
 export const prototypeLinks = {
-  "medilink": "https://www.figma.com/proto/FG25dcDQPYeJ4O2cbqkgtX/Medilink?node-id=1731-31727&p=f&t=bm541nbcNa2zTRHX-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1731%3A31727",
+  "medilink": "https://www.figma.com/proto/FG25dcDQPYeJ4O2cbqkgtX/Medilink?node-id=1731-31727&p=f&t=KRb33fxyiqPlAiU1-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1731%3A31727",
   "cbr-dent": "",
-  "yalla": "https://www.figma.com/proto/vCZ4gUocADM4CAP1BPDPnJ/Yalla-App?node-id=317-1115&p=f&t=BOLRqJxjhvkPnmxK-1&scaling=scale-down&content-scaling=fixed&page-id=11%3A34&starting-point-node-id=313%3A1102",
-  "belibis": "https://www.figma.com/proto/86y4bJPFQJ6XPK6br7nIFR/Aplikasi-Belibis?node-id=231-830&p=f&t=lGcJSATYIY2ov6sq-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=231%3A824&show-proto-sidebar=1", // Belibis App + Website
+  "yalla": "https://www.figma.com/proto/vCZ4gUocADM4CAP1BPDPnJ/Yalla-App?node-id=1009-3097&p=f&t=ON9I77kCJWeSigh5-1&scaling=scale-down&content-scaling=fixed&page-id=11%3A34&starting-point-node-id=313%3A1102",
+  "belibis": "https://www.figma.com/proto/86y4bJPFQJ6XPK6br7nIFR/Aplikasi-Belibis?node-id=174-2520&p=f&t=dVVrthlQhQI6Hj2o-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=174%3A5137&show-proto-sidebar=1", // Belibis App + Website
   "project-placeholder-1": "", // Sinergi-Ji App
-  "project-placeholder-2": "https://www.figma.com/proto/sIeiXUPLUnVYm0ZoMfkY4C/pusakabugis.id?node-id=1-10&p=f&t=tn2SzLCwZ3rJsbeW-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A9&starting-point-node-id=1%3A10", // Pusaka Bugis Web
-  "teazzi": "https://www.figma.com/proto/X5xAo7oYJtcPq9ATdehgEk/Teazzi?node-id=1-164&p=f&t=SHUYPs1DA03OT7ro-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A19",
+  "project-placeholder-2": "https://www.figma.com/proto/sIeiXUPLUnVYm0ZoMfkY4C/pusakabugis.id?node-id=408-138&p=f&t=66fWrnWl9M6IpcTc-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A9&starting-point-node-id=1%3A10", // Pusaka Bugis Web
+  "teazzi": "https://www.figma.com/proto/X5xAo7oYJtcPq9ATdehgEk/Teazzi?node-id=1-129&p=f&t=ghlj99ZTh1IUOLEn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A19",
 };
 
 export const content = {
@@ -319,6 +319,7 @@ export const content = {
           accent: "blue",
           images: ["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"],
           logo: "/medilink-logo.png",
+          caseStudyUrl: "#/project/medilink",
         },
         {
           id: "cbr-dent",
@@ -525,6 +526,7 @@ export const content = {
       languageToggleLabel: "Ganti ke Bahasa Inggris",
       previewLabel: "Pratinjau",
       prototypeLabel: "Lihat Prototype",
+      caseStudyLabel: "Baca studi kasus lengkap",
       prototypeSoonLabel: "Prototype segera hadir",
       slideLabel: "Slide",
       challengeLabel: "Pain Point",
@@ -833,6 +835,7 @@ export const content = {
           accent: "blue",
           images: ["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"],
           logo: "/medilink-logo.png",
+          caseStudyUrl: "#/project/medilink",
         },
         {
           id: "cbr-dent",
@@ -1039,6 +1042,7 @@ export const content = {
       languageToggleLabel: "Switch to Indonesian",
       previewLabel: "Preview",
       prototypeLabel: "View Prototype",
+      caseStudyLabel: "Read the full case study",
       prototypeSoonLabel: "Prototype coming soon",
       slideLabel: "Slide",
       challengeLabel: "Pain Point",
