@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import BackToTop from "./components/BackToTop";
 import CaseStudy from "./components/CaseStudy";
+import TeazziCase from "./components/TeazziCase";
 import { ScrollTrigger } from "./lib/gsap";
 
 // Routing ringan berbasis hash: "#/project/medilink" membuka halaman studi kasus.
@@ -52,6 +53,7 @@ export default function App() {
   }, []);
 
   if (route === "medilink") return <CaseStudy />;
+  if (route === "teazzi") return <TeazziCase />;
 
   return (
     <>
