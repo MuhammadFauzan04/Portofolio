@@ -2,6 +2,8 @@ import { teazzi as d } from "../data/teazziCase";
 import { thumb } from "../lib/thumb";
 import CaseShell from "./CaseShell";
 import { TeazziPalette, TeazziType, TeazziComponents } from "./TeazziDesignSystem";
+import NextProject from "./NextProject";
+import { medilink } from "../data/medilinkCase";
 
 const SECTIONS = [
   ["riset", "Riset pengguna"],
@@ -201,7 +203,12 @@ export default function TeazziCase() {
 
         <h3>Langkah berikutnya</h3>
         <ul className="cs-list tz-next">{d.next.filter((n) => !n.screen || !hasScreen(n.screen)).map((n) => <li key={n.t}>{n.t}</li>)}</ul>
-        <a href="#projects" className="btn btn--primary">Kembali ke semua karya</a>
+        <NextProject
+          href="#/project/medilink" theme="medilink" device="laptop"
+          title={medilink.title} subtitle={medilink.subtitle}
+          tags={["Sistem web", medilink.facts.find(([k]) => k === "Metode")[1]]}
+          images={["/medilink-1.png", "/medilink-2.png", "/medilink-3.png"].map(thumb)}
+        />
       </section>
     </CaseShell>
   );

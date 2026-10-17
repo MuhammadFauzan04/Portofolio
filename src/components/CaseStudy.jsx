@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { medilink as d } from "../data/medilinkCase";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 import ScrollProgress from "./ScrollProgress";
 import { TypeSpecimen, ComponentLibrary } from "./MediDesignSystem";
 import { thumb } from "../lib/thumb";
+import SplitReveal from "./SplitReveal";
+import ImageLightbox from "./ImageLightbox";
+import NextProject from "./NextProject";
+import { teazzi } from "../data/teazziCase";
+import useCaseAnimations from "../hooks/useCaseAnimations";
+import { gsap, prefersReducedMotion } from "../lib/gsap";
 
 const SECTIONS = [
   ["konteks", "Konteks pengguna"],
@@ -14,36 +20,78 @@ const SECTIONS = [
   ["iterasi", "Iterasi & hasil"],
 ];
 
+// Ringkasan tiap fase diambil dari data, jadi ikut berubah bila medilinkCase.js diedit.
+const flowSteps = (d) => [
+  ["konteks", "Konteks", `${d.context.informants.list.length} informan, ${d.context.actors.length} aktor`],
+  ["kebutuhan", "Kebutuhan", `${d.needs.insights.length} temuan jadi kebutuhan`],
+  ["desain", "Desain", `${d.design.screens.length} layar high-fidelity`],
+  ["pengujian", "Pengujian", "Maze, SUS, UAT"],
+  ["iterasi", "Hasil", `SUS ${d.testing.sus.score}, ${d.testing.sus.grade.split(",")[0]}`],
+];
+
 const Head = ({ title, lead }) => (
   <header className="cs-head">
-    <h2>{title}</h2>
+    <SplitReveal as="h2" text={title} />
     {lead && <p className="cs-lead">{lead}</p>}
   </header>
 );
 
 function Gallery({ screens }) {
   const [i, setI] = useState(0);
+  const [zoom, setZoom] = useState(false);
+  const touchX = useRef(null);
+  const n = screens.length;
   const s = screens[i];
+  const go = (d) => setI((v) => (v + d + n) % n);
+
+  // Muat gambar sebelum/sesudahnya lebih dulu supaya pergantian tidak berkedip.
+  useEffect(() => {
+    [(i + 1) % n, (i - 1 + n) % n].forEach((k) => { new Image().src = screens[k].src; });
+  }, [i, n, screens]);
+
   return (
     <div className="cs-gal">
-      <figure className="cs-gal__main">
-        <img key={s.src} src={s.src} alt={`Antarmuka MediLink: ${s.name}`} />
-        <figcaption><b>{s.name}</b> {s.d}</figcaption>
-      </figure>
+      <div
+        className="cs-gal__stage" tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "ArrowRight") go(1); if (e.key === "ArrowLeft") go(-1); }}
+        onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchX.current == null) return;
+          const dx = e.changedTouches[0].clientX - touchX.current;
+          touchX.current = null;
+          if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+        }}
+      >
+        <figure className="cs-gal__main" key={s.src}>
+          <button type="button" className="cs-gal__open" onClick={() => setZoom(true)} aria-label={`Perbesar layar ${s.name}`}>
+            <img src={s.src} alt={`Antarmuka MediLink: ${s.name}`} />
+            <span className="cs-gal__hint">Perbesar</span>
+          </button>
+          <figcaption><b>{s.name}</b> {s.d}<span className="cs-gal__count">{String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span></figcaption>
+        </figure>
+        <button className="cs-gal__arrow cs-gal__arrow--prev" onClick={() => go(-1)} aria-label="Layar sebelumnya">←</button>
+        <button className="cs-gal__arrow cs-gal__arrow--next" onClick={() => go(1)} aria-label="Layar berikutnya">→</button>
+      </div>
       <div className="cs-gal__tabs" role="tablist">
-        {screens.map((x, n) => (
-          <button key={x.name} role="tab" aria-selected={n === i} className={n === i ? "is-on" : ""} onClick={() => setI(n)}>
+        {screens.map((x, k) => (
+          <button key={x.name} role="tab" aria-selected={k === i} className={k === i ? "is-on" : ""} onClick={() => setI(k)}>
             {x.name}
           </button>
         ))}
       </div>
+      {zoom && <ImageLightbox screens={screens} index={i} onIndex={setI} onClose={() => setZoom(false)} />}
     </div>
   );
 }
 
+const goTo = (id) => document.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ behavior: "smooth" });
+
 export default function CaseStudy() {
   const [active, setActive] = useState(SECTIONS[0][0]);
   const [role, setRole] = useState(0);
+  const root = useRef(null);
+  const firstRole = useRef(true);
+  const chipsRef = useRef(null);
 
   useEffect(() => {
     document.title = "MediLink — Studi kasus | Muhammad Fauzan";
@@ -57,15 +105,38 @@ export default function CaseStudy() {
 
   const { context: c, needs: n, design: g, testing: t, iteration: it } = d;
   const r = t.maze.roles[role];
+  // Chip navigasi (HP): jaga chip aktif tetap terlihat tanpa menggeser halaman.
+  useEffect(() => {
+    const box = chipsRef.current;
+    const el = box?.querySelector(".is-active");
+    if (box && el) box.scrollTo({ left: el.offsetLeft - 16, behavior: "smooth" });
+  }, [active]);
+
+  useCaseAnimations(root, { susScore: t.sus.score, dotScores: t.sus.scores });
+
+  // Baris tabel Maze beranimasi tiap ganti peran.
+  useEffect(() => {
+    if (firstRole.current) { firstRole.current = false; return; }
+    if (prefersReducedMotion()) return;
+    const rows = root.current?.querySelectorAll(".cs-seg + .cs-table tbody tr");
+    if (rows?.length) gsap.fromTo(rows, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, ease: "power3.out", clearProps: "all" });
+  }, [role]);
+
   const mean = (t.sus.scores.reduce((a, b) => a + b, 0) / t.sus.scores.length).toFixed(1);
 
   return (
-    <div className="cs">
+    <div className="cs" ref={root}>
       <ScrollProgress />
       <div className="cs-bar">
         <a href="#projects" className="cs-back">← Semua karya</a>
         <div className="cs-bar__tools"><LanguageToggle /><ThemeToggle /></div>
       </div>
+
+      <nav className="cs-chipnav" ref={chipsRef} aria-label="Isi studi kasus">
+        {SECTIONS.map(([id, label]) => (
+          <button key={id} className={active === id ? "is-active" : ""} onClick={() => goTo(id)}>{label}</button>
+        ))}
+      </nav>
 
       <div className="cs-frame">
         <section className="cs-hero">
@@ -76,9 +147,22 @@ export default function CaseStudy() {
           </dl>
           <div className="cs-hero__shot"><img src={thumb(d.hero)} alt="Tampilan halaman masuk MediLink pada laptop" /></div>
           <ul className="cs-stats">
-            {d.stats.map((s) => <li key={s.l}><strong>{s.v}</strong><b>{s.l}</b><span>{s.s}</span></li>)}
+            {d.stats.map((s) => <li key={s.l}><strong data-count={s.v}>{s.v}</strong><b>{s.l}</b><span>{s.s}</span></li>)}
           </ul>
         </section>
+
+        <div className="cs-flow" role="list" aria-label="Alur proses desain">
+          <div className="cs-flow__line" aria-hidden="true"><i /></div>
+          {flowSteps(d).map(([id, name, note], k) => (
+            <div key={id} className="cs-flow__step" role="listitem">
+              <button onClick={() => goTo(id)}>
+                <span className="cs-flow__dot">{k + 1}</span>
+                <b>{name}</b>
+                <small>{note}</small>
+              </button>
+            </div>
+          ))}
+        </div>
 
         <div className="cs-layout">
           <nav className="cs-toc" aria-label="Isi studi kasus">
@@ -186,10 +270,10 @@ export default function CaseStudy() {
                   <li key={name}>
                     <span>{name}</span>
                     <span className="cs-bar-track" role="img" aria-label={`MAUS ${v}`}><i style={{ width: `${v}%` }} /></span>
-                    <b>{v}</b>
+                    <b data-count={v}>{v}</b>
                   </li>
                 ))}
-                <li className="cs-maze__avg"><span>Rata-rata MAUS</span><span /><b>{t.maze.mausAvg}</b></li>
+                <li className="cs-maze__avg"><span>Rata-rata MAUS</span><span /><b data-count={t.maze.mausAvg}>{t.maze.mausAvg}</b></li>
               </ul>
 
               <div className="cs-seg" role="tablist" aria-label="Pilih peran">
@@ -209,7 +293,7 @@ export default function CaseStudy() {
 
               <h3>System Usability Scale <span className="cs-muted">{t.sus.participants} responden pengguna akhir</span></h3>
               <div className="cs-sus">
-                <div className="cs-sus__score"><strong>{t.sus.score}</strong><span>{t.sus.grade}</span></div>
+                <div className="cs-sus__score"><strong data-count={t.sus.score}>{t.sus.score}</strong><span>{t.sus.grade}</span></div>
                 <div>
                   <div className="cs-sus__scale" role="img" aria-label={`Skor SUS ${t.sus.score} dari 100`}>
                     <i className="avg" style={{ left: "68%" }} />
@@ -242,7 +326,12 @@ export default function CaseStudy() {
               <Head title="Iterasi dan hasil" lead={it.lead} />
               <ul className="cs-list">{it.points.map((p) => <li key={p}>{p}</li>)}</ul>
               <p className="cs-lead">{it.next}</p>
-              <a href="#projects" className="btn btn--primary">Kembali ke semua karya</a>
+              <NextProject
+                href="#/project/teazzi" theme="teazzi" device="phone"
+                title={teazzi.title} subtitle={teazzi.subtitle}
+                tags={teazzi.facts.filter(([k]) => k === "Jenis" || k === "Platform").map(([, v]) => v)}
+                images={teazzi.phones.map(thumb)}
+              />
             </section>
           </div>
         </div>

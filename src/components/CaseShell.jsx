@@ -10,7 +10,7 @@ import ScrollProgress from "./ScrollProgress";
 const REVEAL = [
   ".cs-head", ".cs-content h3", ".tz-method", ".cs-tags", ".tz-callout", ".cs-table",
   ".tz-problem", ".tz-hmw li", ".cs-card", ".tz-screen", ".tzd-sw", ".tzd-cell",
-  ".tzd-pal__row > div", ".tzd-type__hero", ".tzd-type__list", ".tz-logo", ".tz-next",
+  ".tzd-pal__row > div", ".tzd-type__hero", ".tzd-type__list", ".tz-logo", ".tz-next", ".cs-next",
 ].join(",");
 
 export default function CaseShell({ slug, docTitle, title, subtitle, facts, hero, sections, className = "", children }) {
