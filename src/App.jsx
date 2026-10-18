@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -28,9 +29,17 @@ export default function App() {
   useEffect(() => {
     const onHash = () => {
       const next = getRoute();
-      setRoute(next);
-      if (next) return window.scrollTo(0, 0);
+
+      // Masuk/pindah ke halaman studi kasus: langsung ke paling atas (tanpa animasi scroll),
+      // lalu render halaman baru pada posisi itu.
+      if (next) {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        flushSync(() => setRoute(next));
+        return;
+      }
+
       // Kembali ke beranda: lompat ke section yang dituju (mis. #projects).
+      setRoute(next);
       const id = window.location.hash.slice(1);
       setTimeout(() => document.getElementById(id)?.scrollIntoView(), 80);
     };

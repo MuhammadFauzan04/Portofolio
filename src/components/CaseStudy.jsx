@@ -92,6 +92,7 @@ export default function CaseStudy() {
   const root = useRef(null);
   const firstRole = useRef(true);
   const chipsRef = useRef(null);
+  const stage = useRef(null);
 
   useEffect(() => {
     document.title = "MediLink — Studi kasus | Muhammad Fauzan";
@@ -111,6 +112,32 @@ export default function CaseStudy() {
     const el = box?.querySelector(".is-active");
     if (box && el) box.scrollTo({ left: el.offsetLeft - 16, behavior: "smooth" });
   }, [active]);
+
+  // Panggung hero: laptop miring mengikuti kursor, sorotan hijau ikut bergerak (hanya perangkat dengan mouse).
+  useEffect(() => {
+    const el = stage.current;
+    if (!el || prefersReducedMotion() || !window.matchMedia("(hover: hover)").matches) return;
+    const lap = el.querySelector(".cs-stage__laptop");
+    const rx = gsap.quickTo(lap, "rotationX", { duration: 0.8, ease: "power3.out" });
+    const ry = gsap.quickTo(lap, "rotationY", { duration: 0.8, ease: "power3.out" });
+    const move = (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      ry((px - 0.5) * 10);
+      rx((0.5 - py) * 6);
+      el.style.setProperty("--mx", `${px * 100}%`);
+      el.style.setProperty("--my", `${py * 100}%`);
+    };
+    const leave = () => { rx(0); ry(0); };
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerleave", leave);
+    return () => {
+      el.removeEventListener("pointermove", move);
+      el.removeEventListener("pointerleave", leave);
+      gsap.set(lap, { clearProps: "transform" });
+    };
+  }, []);
 
   useCaseAnimations(root, { susScore: t.sus.score, dotScores: t.sus.scores });
 
@@ -145,7 +172,13 @@ export default function CaseStudy() {
           <dl className="cs-facts">
             {d.facts.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
           </dl>
-          <div className="cs-hero__shot"><img src={thumb(d.hero)} alt="Tampilan halaman masuk MediLink pada laptop" /></div>
+          <div className="cs-hero__shot cs-stage" ref={stage}>
+            <div className="cs-stage__laptop">
+              <div className="cs-stage__float">
+                <img src={thumb(d.hero)} alt="Tampilan halaman masuk MediLink pada laptop" />
+              </div>
+            </div>
+          </div>
           <ul className="cs-stats">
             {d.stats.map((s) => <li key={s.l}><strong data-count={s.v}>{s.v}</strong><b>{s.l}</b><span>{s.s}</span></li>)}
           </ul>

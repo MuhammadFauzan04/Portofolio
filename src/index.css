@@ -2947,7 +2947,7 @@ button:hover .arrow-circle svg,
 }
 
 /* Proyek berikutnya */
-.cs-next { --nx-navy:#00205d; --nx-green:#47ae59; --nx-blue:#0b4cb3; --nx-g1:#00205d; --nx-g2:#0a3a8f; --nx-g3:#0f6b6a; --nx-glow:rgba(71,174,89,.85); --pad:clamp(24px,4vw,48px); position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(12px,3vw,32px); min-height:clamp(380px,42vw,460px); margin-top:48px; padding:var(--pad); overflow:hidden; border-radius:calc(var(--radius) + 8px); color:#fff;
+.cs-next { --nx-navy:#00205d; --nx-green:#47ae59; --nx-blue:#0b4cb3; --nx-g1:#00205d; --nx-g2:#0a3a8f; --nx-g3:#0f6b6a; --nx-glow:rgba(71,174,89,.85); --pad:clamp(20px,3vw,36px); position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(12px,3vw,28px); min-height:clamp(290px,29vw,330px); margin-top:48px; padding:var(--pad); overflow:hidden; border-radius:calc(var(--radius) + 8px); color:#fff;
   background:
     radial-gradient(85% 85% at 75% 72%, var(--nx-glow) 0%, transparent 62%),
     radial-gradient(70% 70% at 0% 0%, var(--nx-blue) 0%, transparent 72%),
@@ -2959,17 +2959,17 @@ button:hover .arrow-circle svg,
 .cs-next:hover, .cs-next:focus-visible { background-position:100% 100%; box-shadow:0 30px 70px -26px rgba(0,32,93,.9), 0 0 0 1px rgba(255,255,255,.18) inset; }
 .cs-next:hover::before { transform:scale(1.1); }
 
-.cs-next__text { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+.cs-next__text { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
 .cs-next small { display:inline-flex; align-items:center; gap:10px; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.75); }
 .cs-next small i { width:28px; height:1px; background:currentColor; transition:width .5s cubic-bezier(.65,0,.15,1); }
 .cs-next:hover small i { width:56px; }
-.cs-next strong { font-size:clamp(3rem,8vw,6.5rem); font-weight:300; letter-spacing:-.05em; line-height:.9; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+.cs-next strong { font-size:clamp(2.6rem,6vw,4.6rem); font-weight:300; letter-spacing:-.05em; line-height:.9; transition:transform .6s cubic-bezier(.22,1,.36,1); }
 .cs-next:hover strong { transform:translateX(8px); }
-.cs-next__sub { max-width:42ch; font-size:13.5px; line-height:1.65; color:rgba(255,255,255,.82); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.cs-next__sub { max-width:42ch; font-size:13.5px; line-height:1.65; color:rgba(255,255,255,.82); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 .cs-next__meta { display:flex; flex-wrap:wrap; gap:8px; }
 .cs-next__meta li { padding:5px 11px; border:1px solid rgba(255,255,255,.35); border-radius:99px; background:rgba(255,255,255,.08); backdrop-filter:blur(6px); font-size:11.5px; }
-.cs-next__cta { display:inline-flex; align-items:center; gap:14px; margin-top:auto; padding:6px 6px 6px 20px; border-radius:99px; background:#fff; color:var(--nx-navy); font-size:13.5px; font-weight:600; }
-.cs-next__cta b { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:var(--nx-navy); color:#fff; font-size:16px; font-weight:400; transform:rotate(-45deg); transition:transform .5s cubic-bezier(.22,1,.36,1), background .4s; }
+.cs-next__cta { display:inline-flex; align-items:center; gap:14px; margin-top:auto; padding:5px 5px 5px 18px; border-radius:99px; background:#fff; color:var(--nx-navy); font-size:13.5px; font-weight:600; }
+.cs-next__cta b { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--nx-navy); color:#fff; font-size:16px; font-weight:400; transform:rotate(-45deg); transition:transform .5s cubic-bezier(.22,1,.36,1), background .4s; }
 .cs-next:hover .cs-next__cta b { transform:none; background:var(--nx-green); }
 
 /* Mockup aplikasi Teazzi: ukurannya mengikuti tinggi kartu (persen), bukan piksel tetap */
@@ -2990,8 +2990,8 @@ button:hover .arrow-circle svg,
 
 /* Varian laptop: ukuran mengikuti lebar kolom mockup */
 .cs-next--laptop .cs-next__ph { height:auto; aspect-ratio:1400 / 853; }
-.cs-next--laptop .cs-next__ph--c { z-index:3; width:118%; left:50%; bottom:7%; transform:translateX(-52%) translateY(6%) rotate(-2deg); }
-.cs-next--laptop .cs-next__ph--r { z-index:1; width:96%; left:50%; bottom:43%; transform:translateX(-8%) translateY(8%) rotate(3deg); }
+.cs-next--laptop .cs-next__ph--c { z-index:3; width:104%; left:50%; bottom:8%; transform:translateX(-52%) translateY(6%) rotate(-2deg); }
+.cs-next--laptop .cs-next__ph--r { z-index:1; width:86%; left:50%; bottom:42%; transform:translateX(-8%) translateY(8%) rotate(3deg); }
 .cs-next--laptop:hover .cs-next__ph--c { transform:translateX(-52%) translateY(-1%) rotate(-3deg); }
 .cs-next--laptop:hover .cs-next__ph--r { transform:translateX(-2%) translateY(0) rotate(5deg); }
 
@@ -3005,3 +3005,38 @@ button:hover .arrow-circle svg,
 @media (prefers-reduced-motion: reduce) {
   .cs-next, .cs-next *, .cs-next::before { transition:none !important; animation:none !important; }
 }
+
+/* =========================================================================
+   Pembatas studi kasus
+   ========================================================================= */
+.cs-sep { display:flex; align-items:center; gap:18px; margin:clamp(56px,8vw,104px) 0 0; color:var(--ink-mute); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; }
+.cs-sep i { flex:1; height:1px; background:var(--line-strong); transform:scaleX(0); transition:transform 1.1s cubic-bezier(.65,0,.15,1); }
+.cs-sep i:first-child { transform-origin:right center; }
+.cs-sep i:last-child { transform-origin:left center; }
+.cs-sep span { display:inline-flex; align-items:center; gap:10px; opacity:0; transform:translateY(8px); transition:opacity .6s .35s, transform .6s .35s; white-space:nowrap; }
+.cs-sep b { color:var(--m3); font-weight:400; }
+.cs-sep.is-in i { transform:scaleX(1); }
+.cs-sep.is-in span { opacity:1; transform:none; }
+.cs-sep + .cs-next { margin-top:28px; }
+@media (prefers-reduced-motion: reduce) { .cs-sep i, .cs-sep span { transition:none; transform:none; opacity:1; } }
+
+
+/* MediLink: panggung hero (ringkas: gradient, lingkaran cahaya di belakang laptop, laptop 3D) */
+.cs-stage { --mx:50%; --my:40%; position:relative; isolation:isolate; perspective:1200px; overflow:hidden; padding:clamp(24px,4vw,48px) clamp(12px,4vw,40px) clamp(20px,3vw,36px);
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(74,112,169,.5), transparent 70%),
+    linear-gradient(165deg, #0c2b4e 0%, #123a6b 100%); }
+/* Lingkaran cahaya + cincin tipis yang membingkai laptop */
+.cs-stage::before { content:""; position:absolute; z-index:-1; left:50%; top:52%; width:min(68%,560px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 50% 45%, rgba(102,203,108,.42) 0%, rgba(26,122,150,.22) 55%, transparent 72%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12), 0 0 0 clamp(24px,4vw,44px) rgba(255,255,255,.03); }
+/* Sorotan hijau halus yang mengikuti kursor */
+.cs-stage::after { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0; transition:opacity .5s; background:radial-gradient(420px circle at var(--mx) var(--my), rgba(102,203,108,.16), transparent 60%); }
+.cs-stage:hover::after { opacity:1; }
+.cs-stage__laptop { position:relative; max-width:620px; margin-inline:auto; will-change:transform; }
+/* Bayangan lembut di bawah laptop */
+.cs-stage__laptop::after { content:""; position:absolute; left:6%; right:6%; bottom:-6px; height:14px; border-radius:50%; background:rgba(0,10,30,.55); filter:blur(10px); z-index:-1; }
+.cs-stage__float { animation:csLaptopFloat 7s ease-in-out infinite; }
+.cs-stage .cs-stage__laptop img { width:100%; max-width:none; }
+@keyframes csLaptopFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .cs-stage__float { animation:none; } }
