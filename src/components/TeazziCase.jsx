@@ -3,6 +3,7 @@ import { thumb } from "../lib/thumb";
 import CaseShell from "./CaseShell";
 import { TeazziPalette, TeazziType, TeazziComponents } from "./TeazziDesignSystem";
 import NextProject from "./NextProject";
+import TeazziGallery from "./TeazziGallery";
 import { medilink } from "../data/medilinkCase";
 
 const SECTIONS = [
@@ -25,20 +26,6 @@ const STATUS = { done: "Sudah didesain", todo: "Belum didesain" };
 // Layar dianggap ada bila `src` terisi. Slot kosong hanya tampil saat dev.
 const SHOW_EMPTY = import.meta.env.DEV;
 const hasScreen = (id) => !!d.screens.find((x) => x.id === id)?.src;
-
-// Pakai thumbnail WebP bila ada; jika belum dibuat, jatuh ke file aslinya.
-function Shot({ src, alt }) {
-  return (
-    <img
-      src={thumb(src)}
-      alt={alt}
-      loading="lazy"
-      onError={(e) => {
-        if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = "1"; e.currentTarget.src = src; }
-      }}
-    />
-  );
-}
 
 export default function TeazziCase() {
   const r = d.research;
@@ -70,6 +57,34 @@ export default function TeazziCase() {
 
         <h3>Topik yang digali</h3>
         <div className="cs-tags">{r.topics.map((t) => <span key={t}>{t}</span>)}</div>
+
+        <h3>User persona</h3>
+        <p className="cs-note">{d.persona.lead}</p>
+        <div className="tz-personas">
+          {d.persona.items.map((u) => (
+            <article key={u.name} className="cs-card tz-persona">
+              <header className="tz-persona__head">
+                <span className="tz-persona__avatar" aria-hidden="true">{u.initial}</span>
+                <div>
+                  <span className="tz-chip">Proto-persona</span>
+                  <h4>{u.name}</h4>
+                  <p>{u.summary}</p>
+                </div>
+              </header>
+              <blockquote className="tz-persona__quote">"{u.quote}"<cite>Informan</cite></blockquote>
+              <div className="tz-persona__cols">
+                <div><h5>Perilaku</h5><ul className="cs-list">{u.behaviors.map((x) => <li key={x}>{x}</li>)}</ul></div>
+                <div><h5>Tujuan</h5><ul className="cs-list">{u.goals.map((x) => <li key={x}>{x}</li>)}</ul></div>
+                <div><h5>Frustrasi</h5><ul className="cs-list">{u.frustrations.map((x) => <li key={x}>{x}</li>)}</ul></div>
+              </div>
+              <div className="tz-persona__needs">
+                <h5>Yang diharapkan dari aplikasi</h5>
+                <div className="cs-tags">{d.ideal.items.map(([t]) => <span key={t}>{t}</span>)}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="cs-note">{d.persona.note}</p>
 
         <p className="tz-callout">{r.limits}</p>
       </section>
@@ -176,30 +191,8 @@ export default function TeazziCase() {
 
       {/* 5. Hasil */}
       <section data-id="hasil" className="cs-sec">
-        <Head title="Hasil desain" lead="Empat layar utama, masing-masing dengan masalah yang dijawab dan keputusan desain di baliknya." />
-        <div className="tz-screens">
-          {d.screens.filter((s) => s.src || SHOW_EMPTY).map((s, i) => (
-            <article key={s.n} className={`tz-screen ${i % 2 ? "is-rev" : ""}`}>
-              <div className="tz-screen__phone">
-                {s.src ? (
-                  <Shot src={s.src} alt={`Layar ${s.name}`} />
-                ) : (
-                  <div className="tz-slot">
-                    <b>Slot gambar</b>
-                    <span>Letakkan PNG di <code>public/</code>, lalu isi <code>src</code> pada layar "{s.id}" di <code>teazziCase.js</code></span>
-                  </div>
-                )}
-              </div>
-              <div className="tz-screen__text">
-                <span className="tz-chip">{s.n} · {s.solves}</span>
-                <h3>{s.name}</h3>
-                <p>{s.d}</p>
-                {s.decisions.length > 0 && <ul className="cs-list">{s.decisions.map((x) => <li key={x}>{x}</li>)}</ul>}
-                {!s.src && <p className="tz-draft">Hanya tampil saat pengembangan. Di situs publik slot ini disembunyikan sampai gambarnya ada.</p>}
-              </div>
-            </article>
-          ))}
-        </div>
+        <Head title="Hasil desain" lead="Tiap layar dilengkapi masalah yang dijawab dan keputusan desain di baliknya. Pilih layar lewat tab atau panah, klik gambar untuk memperbesar." />
+        <TeazziGallery screens={d.screens.filter((s) => s.src || SHOW_EMPTY)} />
 
         <h3>Langkah berikutnya</h3>
         <ul className="cs-list tz-next">{d.next.filter((n) => !n.screen || !hasScreen(n.screen)).map((n) => <li key={n.t}>{n.t}</li>)}</ul>

@@ -2702,6 +2702,8 @@ button:hover .arrow-circle svg,
 .cs--teazzi .tz-hero img { --y:0px; width:min(23.5%,250px); max-width:none; margin:0; border-radius:0; box-shadow:none; filter:drop-shadow(0 26px 30px rgba(0,0,0,.3)); animation:tzRise 1s cubic-bezier(.2,.7,.2,1) both, tzFloat 7s ease-in-out 1.4s infinite; animation-delay:calc(var(--i,0)*130ms), calc(1.4s + var(--i,0)*420ms); }
 .tz-hero img:nth-child(odd) { --y:34px; }
 .tz-hero img:nth-child(even) { --y:0px; }
+.tz-gal { margin-top:40px; }
+.tz-gal .cs-gal__tabs { margin-top:48px; }
 @keyframes tzRise { from { opacity:0; transform:translateY(calc(var(--y) + 70px)) scale(.96); } to { opacity:1; transform:translateY(var(--y)) scale(1); } }
 @keyframes tzFloat { 0%,100% { transform:translateY(var(--y)); } 50% { transform:translateY(calc(var(--y) - 10px)); } }
 
@@ -2728,6 +2730,41 @@ button:hover .arrow-circle svg,
 .tz-hmw { display:grid; gap:10px; counter-reset:h; }
 .tz-hmw li { counter-increment:h; display:flex; gap:14px; padding:16px 18px; border-radius:var(--radius); background:#00205d; color:#f2f6ff; font-size:clamp(.95rem,1.5vw,1.1rem); line-height:1.5; }
 .tz-hmw li::before { content:counter(h); flex:none; font-family:var(--mono); font-size:12px; color:#8fd19a; padding-top:3px; }
+
+/* user persona */
+.tz-personas { display:grid; gap:16px; margin-top:16px; }
+.tz-persona { padding:clamp(20px,3vw,32px); }
+.tz-persona__head { display:flex; gap:18px; align-items:flex-start; }
+.tz-persona__avatar { flex:none; display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#05a9dd,#47ae59); color:#fff; font-size:1.6rem; font-weight:500; }
+.tz-persona__head h4 { margin:0 0 6px; font-size:1.25rem; font-weight:500; }
+.tz-persona__head p { max-width:62ch; font-size:13.5px; line-height:1.65; color:var(--ink-soft); }
+.tz-persona__quote { margin:22px 0; padding-left:14px; border-left:2px solid var(--m3); font-size:15px; line-height:1.65; font-style:italic; color:var(--ink); }
+.tz-persona__quote cite { display:block; margin-top:6px; font-size:11.5px; font-style:normal; color:var(--ink-mute); }
+.tz-persona__cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.tz-persona h5 { margin:0 0 12px; font-size:11px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--m3); }
+.tz-persona__needs { margin-top:26px; padding-top:20px; border-top:1px solid var(--line); }
+.tz-persona__needs h5 { margin-bottom:10px; }
+@media (max-width:560px) { .tz-persona__head { flex-direction:column; } }
+
+/* galeri hasil desain Teazzi */
+.tz-gal__stage { outline-offset:6px; }
+.tz-gal__main { display:grid; grid-template-columns:minmax(220px,300px) minmax(0,1fr); gap:clamp(24px,5vw,56px); align-items:center; }
+.tz-gal__phone { padding:0 8px; }
+.tz-gal__phone .cs-gal__open { cursor:zoom-in; }
+.tz-gal__phone img { display:block; width:100%; border:0; border-radius:0; background:none; filter:drop-shadow(0 28px 32px rgba(0,0,0,.28)); }
+.tz-gal__text h3 { margin:0 0 10px; font-size:1.5rem; font-weight:300; }
+.tz-gal__text > p { margin-bottom:16px; font-size:14.5px; line-height:1.7; color:var(--ink-soft); }
+.tz-gal__nav { display:flex; align-items:center; gap:10px; margin-top:28px; }
+.tz-gal__nav button { display:grid; place-items:center; width:40px; height:40px; border:1px solid var(--line-strong); border-radius:50%; background:transparent; color:var(--ink); font-size:16px; cursor:pointer; transition:background .25s, border-color .25s, color .25s, transform .2s; }
+.tz-gal__nav button:hover { background:var(--m3); border-color:var(--m3); color:#fff; }
+.tz-gal__nav button:active { transform:scale(.92); }
+.tz-gal__nav .cs-gal__count { float:none; margin-left:auto; }
+.tz-gal .tz-slot { max-width:300px; margin-inline:auto; }
+.lb--phone .lb__fig img { background:none; border-radius:0; filter:drop-shadow(0 24px 40px rgba(0,0,0,.5)); }
+@media (max-width:760px) {
+  .tz-gal__main { grid-template-columns:1fr; }
+  .tz-gal__phone { max-width:280px; margin-inline:auto; }
+}
 
 .tz-sols, .tz-principles { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
 .tz-principles { grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }

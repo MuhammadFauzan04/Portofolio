@@ -32,6 +32,39 @@ export const teazzi = {
     limits: "Jumlah informan masih terbatas dan akan terus bertambah. Salah satunya adalah perancang aplikasi sendiri sehingga ada potensi bias. Temuan diperlakukan sebagai hipotesis awal yang perlu divalidasi dengan lebih banyak pelanggan.",
   },
 
+  // Proto-persona: disintesis dari pola jawaban informan, bukan satu orang nyata.
+  // Hanya berisi hal yang muncul di wawancara. Tambahkan objek baru di `items` bila ada segmen lain.
+  persona: {
+    lead: "Dari pola jawaban informan disusun satu proto-persona yang mewakili pelanggan Teazzi di gerai mal. Isinya hanya yang benar-benar muncul di wawancara.",
+    note: "Persona ini sintesis pola, bukan satu orang. Usia, pekerjaan, dan data demografis sengaja tidak dicantumkan karena belum ada datanya. Akan diperbarui setelah informan bertambah.",
+    items: [
+      {
+        name: "Pelanggan setia gerai mal",
+        initial: "P",
+        summary: "Memilih Teazzi karena rekomendasi orang terdekat, datang langsung ke gerai, memperhitungkan harga dan promo, dan mengumpulkan stamp di kartu kertas.",
+        quote: "Estimasi waktu dan status sangat penting untuk diketahui agar waktu dapat digunakan hal yang lain.",
+        behaviors: [
+          "Datang langsung ke gerai di mal",
+          "Harga dan promo menjadi pertimbangan sebelum membeli",
+          "Mengumpulkan stamp di kartu kertas (10 stamp, gratis 1 minuman)",
+          "Memakai GoFood dan GrabFood sebagai kanal pesan jarak jauh",
+        ],
+        goals: [
+          "Memesan tanpa berdiri lama di antrean",
+          "Tahu estimasi dan status pesanan agar waktu bisa dipakai untuk hal lain",
+          "Mendapat harga dan promo dengan mudah",
+          "Reward loyalitas tidak hilang",
+        ],
+        frustrations: [
+          "Antrean banyak di gerai kecil yang membuat jalan ramai",
+          "Menunggu lama tanpa tempat duduk dan tanpa kabar status",
+          "Sering bingung memilih menu",
+          "Kartu stamp dan voucher kertas tercecer atau lupa dibawa",
+        ],
+      },
+    ],
+  },
+
   journey: [
     {
       stage: "Niat membeli",
@@ -161,11 +194,11 @@ export const teazzi = {
   ],
 
   design: {
-    lead: "Identitas visual dibawa dari brand Teazzi: biru tua yang tenang dan aksen hijau daun yang segar. Prinsip desain diturunkan langsung dari masalah yang ditemukan.",
+    lead: "Identitas visual dibawa dari brand Teazzi: biru tua yang tenang dan aksen hijau daun yang segar. Prinsip desain diturunkan langsung dari masalah yang ditemukan, terutama frustrasi dan tujuan persona pelanggan setia.",
     principles: [
-      { t: "Tahu statusnya", d: "Estimasi dan status pesanan selalu terlihat jelas.", from: "Masalah 02" },
-      { t: "Pilih tanpa bingung", d: "Kategori, rekomendasi, dan deskripsi rasa membantu memutuskan.", from: "Masalah 03" },
-      { t: "Harga terbuka", d: "Harga dan promo tampil sebelum pelanggan berkomitmen.", from: "Masalah 04" },
+      { t: "Tahu statusnya", d: "Estimasi dan status pesanan selalu terlihat jelas.", from: "Masalah 02 · Frustrasi persona" },
+      { t: "Pilih tanpa bingung", d: "Kategori, rekomendasi, dan deskripsi rasa membantu memutuskan.", from: "Masalah 03 · Frustrasi persona" },
+      { t: "Harga terbuka", d: "Harga dan promo tampil sebelum pelanggan berkomitmen.", from: "Masalah 04 · Tujuan persona" },
       { t: "Segar dan ringan", d: "Biru tua, hijau daun, ruang putih lega, kartu membulat.", from: "Identitas brand" },
     ],
     colors: [
