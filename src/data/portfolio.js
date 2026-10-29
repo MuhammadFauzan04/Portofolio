@@ -127,13 +127,24 @@ export const content = {
       ],
       internships: [
         {
+          id: "intern-auspify",
+          role: "UI/UX Designer",
+          org: "Auspify Technologies",
+          period: "Oktober 2026 — November 2026",
+          points: [
+            "Merancang aplikasi perbankan digital secara end-to-end di Figma, mulai dari user research, wireframing, desain high-fidelity, hingga prototipe interaktif.",
+            "Merancang user journey, wireframe, dan antarmuka aplikasi e-commerce mobile untuk menyederhanakan alur pemesanan dan transaksi produk.",
+            "Merancang antarmuka landing page yang intuitif dan terstruktur agar informasi fasilitas tersampaikan dengan jelas.",
+          ],
+        },
+        {
           id: "intern-choice",
           role: "UI/UX Designer",
           org: "CV. Choice Indonesia",
           period: "November 2025 — Februari 2026",
           points: [
-            "Merancang UI/UX Sistem Informasi Manajemen Rumah Sakit (MediLink) untuk RSUD Wakatobi, mulai dari analisis kebutuhan pengguna, pembuatan wireframe, hingga desain antarmuka menggunakan Figma.",
-            "Melakukan monitoring, pendampingan, dan memberikan arahan kepada peserta Praktik Kerja Lapangan (PKL) selama pelaksanaan proyek untuk memastikan pekerjaan berjalan sesuai standar dan target.",
+            "Merancang UI/UX Sistem Informasi Manajemen Rumah Sakit (MediLink) untuk RSUD Wakatobi, mulai dari analisis kebutuhan pengguna, wireframe, hingga desain antarmuka di Figma.",
+            "Memantau, mendampingi, dan mengarahkan peserta Praktik Kerja Lapangan (PKL) selama proyek berjalan agar hasil kerja sesuai standar dan target.",
           ],
           certificate: "/sertifikat-choice.jpg",
         },
@@ -143,8 +154,8 @@ export const content = {
           org: "Dinas Komunikasi dan Informatika Kota Makassar",
           period: "Januari 2025 — Juni 2025",
           points: [
-            "Merancang UI/UX untuk berbagai sistem dan layanan digital Pemerintah Kota Makassar, mulai dari user flow, wireframe, hingga prototype..",
-            "Mengembangkan frontend yang responsif serta berkontribusi pada 6 proyek digital, termasuk SINERGI-JI, MARVEC Dashboard, Website Buku Tamu DISKOMINFO, Dashboard Kelurahan Cantik, Website AI CCTV, dan Dashboard Analisis CCTV Lorong.",
+            "Merancang UI/UX untuk berbagai sistem dan layanan digital Pemerintah Kota Makassar, mulai dari user flow dan wireframe hingga prototipe.",
+            "Mengembangkan frontend responsif dan berkontribusi pada 6 proyek digital: SINERGI-JI, MARVEC Dashboard, Website Buku Tamu DISKOMINFO, Dashboard Kelurahan Cantik, Website AI CCTV, dan Dashboard Analisis CCTV Lorong.",
           ],
           certificate: "/sertifikat-diskominfo.jpg",
         },
@@ -644,13 +655,24 @@ export const content = {
       ],
       internships: [
         {
+          id: "intern-auspify",
+          role: "UI/UX Designer",
+          org: "Auspify Technologies",
+          period: "October 2026 — November 2026",
+          points: [
+            "Designed a digital banking app end to end in Figma, from user research and wireframing to high-fidelity design and an interactive prototype.",
+            "Designed the user journey, wireframes, and interface of a mobile e-commerce app to streamline the ordering and checkout flow.",
+            "Designed an intuitive, well-structured landing page interface to present facility information clearly.",
+          ],
+        },
+        {
           id: "intern-choice",
           role: "UI/UX Designer",
           org: "CV. Choice Indonesia",
           period: "November 2025 — February 2026",
           points: [
             "Designed the UI/UX for a Hospital Management Information System (MediLink) for RSUD Wakatobi, from user needs analysis and wireframing to interface design in Figma.",
-            "Monitored and mentored internship (PKL) participants throughout the project, providing direction to keep the work on track with the required standards and targets.",
+            "Monitored, mentored, and guided internship (PKL) participants throughout the project to keep their work in line with the required standards and targets.",
           ],
           certificate: "/sertifikat-choice.jpg",
         },
@@ -661,7 +683,7 @@ export const content = {
           period: "January 2025 — June 2025",
           points: [
             "Designed UI/UX for various digital systems and services for the Makassar City Government, from user flow and wireframes through to prototypes.",
-            "Developed responsive frontends and contributed to 6 digital projects, including SINERGI-JI, the MARVEC Dashboard, the DISKOMINFO Guest Book website, the Kelurahan Cantik Dashboard, the AI CCTV website, and the Lorong CCTV Analysis Dashboard.",
+            "Built responsive frontends and contributed to 6 digital projects: SINERGI-JI, the MARVEC Dashboard, the DISKOMINFO Guest Book website, the Kelurahan Cantik Dashboard, the AI CCTV website, and the Lorong CCTV Analysis Dashboard.",
           ],
           certificate: "/sertifikat-diskominfo.jpg",
         },

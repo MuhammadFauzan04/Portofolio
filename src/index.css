@@ -2702,8 +2702,6 @@ button:hover .arrow-circle svg,
 .cs--teazzi .tz-hero img { --y:0px; width:min(23.5%,250px); max-width:none; margin:0; border-radius:0; box-shadow:none; filter:drop-shadow(0 26px 30px rgba(0,0,0,.3)); animation:tzRise 1s cubic-bezier(.2,.7,.2,1) both, tzFloat 7s ease-in-out 1.4s infinite; animation-delay:calc(var(--i,0)*130ms), calc(1.4s + var(--i,0)*420ms); }
 .tz-hero img:nth-child(odd) { --y:34px; }
 .tz-hero img:nth-child(even) { --y:0px; }
-.tz-gal { margin-top:40px; }
-.tz-gal .cs-gal__tabs { margin-top:48px; }
 @keyframes tzRise { from { opacity:0; transform:translateY(calc(var(--y) + 70px)) scale(.96); } to { opacity:1; transform:translateY(var(--y)) scale(1); } }
 @keyframes tzFloat { 0%,100% { transform:translateY(var(--y)); } 50% { transform:translateY(calc(var(--y) - 10px)); } }
 
